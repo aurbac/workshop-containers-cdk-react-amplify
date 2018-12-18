@@ -95,28 +95,53 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
 4.5\. Complete the **Configure Load Balancer** page as follows:
 
-  a\. For Name, type `backend` for your load balancer.
+  a\. For **Name**, type `backend` for your load balancer.
 
-  b\. For Scheme, use an internet-facing load balancer routes requests from clients over the internet to targets.
+  b\. For **Scheme**, use an internet-facing load balancer routes requests from clients over the internet to targets.
 
-  c\. For IP address type, choose ipv4 to support IPv4 addresses only or dualstack to support both IPv4 and IPv6 addresses.
+  c\. For **IP address type**, choose ipv4 to support IPv4 addresses only or dualstack to support both IPv4 and IPv6 addresses.
 
-  d\. For Listeners, the default is a listener that accepts HTTP traffic on port 80.
+  d\. For **Listeners**, the default is a listener that accepts HTTP traffic on port 80.
 
-  e\. For VPC, select the **My VPC**.
+  e\. For **VPC**, select the `My VPC`.
 
-  f\. For Availability Zones, select the check box for the Availability Zones to enable for your load balancer. For us-east-1a select the **Public Subnet 01** and for us-east-1b select **Public Subnet 02**.
+  f\. For **Availability Zones**, select the check box for the Availability Zones to enable for your load balancer. For us-east-1a select the **Public Subnet 01** and for us-east-1b select **Public Subnet 02**.
 
   g\. Choose **Next: Configure Security Settings** and choose **Next: Configure Security Groups**.
 
   h\. Select **Create a new security group**, for the Security group name type `backend-alb` and choose **Next: Configure Routing**.
 
-  i\. In the Configure Routing sectio, for Name type `backend`, for Target type, choose to register your targets with an IP address and choose **Next: Register Targets**.
+  i\. In the **Configure Routing** section, for **Name** type `backend`, for Target type, choose to register your targets with an IP address and choose **Next: Register Targets**.
 
   j\. Choose **Next: Review**, click on **Create** and **Close**.
 
+## 5. Create the Task Definition
 
+5.1\. Open the Amazon ECS console at https://console.aws.amazon.com/ecs/home?#/taskDefinitions
 
+5.2\. Choose **Create new Task Definition**.
 
+5.3\. On the **Select launch type compatibility** use **FARGATE** and click on **Next step**.
 
+5.4\. Complete the **Configure task and container definitions** page as follows:
+
+  a\. For **Task Definition Name** type `backend`.
+
+  b\. For **Task Role** select `None`.
+
+  c\. For **Task execution role** select `Create new role`.
+
+  d\. For **Task memory (GB)** select `0.5GB`.
+
+  e\. For **Task CPU (vCPU)** select `0.25 vCPU`.
+
+  f\. Click on **Add container**.
+
+  g\. For the **Container Name** type `backend`.
+
+  h\. For the **Image** paste the URI repository that you copied earlier in step 3.4.
+
+  i\. For the **Port mappings** type `3000` and click on **Add**.
+
+  j\. Click on **Create**.
 
