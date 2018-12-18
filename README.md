@@ -257,11 +257,11 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
 7.7\. Install the node dependencies with `npm install`.
 
-7.7\. Edit the file **src/environments/environment.prod.ts** and change the value for **path** to your load balancer DNS Name.
+7.7\. Edit the file **src/environments/environment.prod.ts** and change the value for **path** to your load balancer DNS Name, use the editor included in Cloud9 environment.
 
 7.7\. Build the angular application for distrbution with `ng build --prod`.
 
-7.8\. Upload the distribution files to your bucket with `aws s3 sync dist/frontend/ s3://<your-bucket-name>/`, change <your-bucket-name> with your bucket name created.
+7.8\. Upload the distribution files to your bucket with `aws s3 sync dist/frontend/ s3://<your-bucket-name>/`, change `<your-bucket-name>` with your bucket name created.
 
 
 
