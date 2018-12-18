@@ -263,7 +263,7 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
 7.8\. Upload the distribution files to your bucket with `aws s3 sync dist/frontend/ s3://<your-bucket-name>/`, change `<your-bucket-name>` with your bucket name created.
 
-## 8. Public you application using CloudFront
+## 8. Deliver you application using Amazon CloudFront
 
 8.1\. Open the Amazon CloudFront console at https://console.aws.amazon.com/cloudfront/.
 
@@ -313,4 +313,4 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
 #### Congratulations, now you have an Angular Application stored on Amazon S3 and a Nodejs backend using containers with Amazon ECS.
 
-
+![Angular Application](https://github.com/aurbac/nodejs-back-and-angular-front/raw/master/images/angular.png)
