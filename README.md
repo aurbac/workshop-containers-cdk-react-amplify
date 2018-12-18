@@ -51,49 +51,17 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 | 10.1.0.0/16 | local | 
 | 0.0.0.0/0  | NAT Gateway (Select the only one) |
 
-## 2. Create Cloud9 instance for development
+## 2. Create the Application Load Balancer for the Backend
 
-2.1\. Open the AWS Cloud9 console at https://console.aws.amazon.com/cloud9/.
+2.1\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 
-2.2\. Click on **Create environment**.
+2.2\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
 
-2.3\. Type a Name of `MyDevelopmentInstance`, and choose **Next step**.
+2.3\. Choose **Create Load Balancer**.
 
-2.4\. Expand **Network settings (advanced)** and select your VPC ID and the Subnet ID (Public Subnet 01) that you copied earlier, and choose **Next step**.
+2.4\. On the **Select load balancer type** page, choose **Application Load Balancer** and then choose **Continue**.
 
-2.5\. Click on **Create environment**.
-
-2.6\. Now inside the **bash** terminal clone the reposiotry with `git clone https://github.com/aurbac/nodejs-back-and-angular-front.git`.
-
-2.7\. Install the Angular CLI globally with `npm install -g @angular/cli`.
-
-## 3. Create the backend docker image and upload to Amazon ECR
-
-3.1\. Inside your Cloud9 environment got to the backend folder `cd /home/ec2-user/environment/nodejs-back-and-angular-front/backend`
-
-3.2\. Install the node dependencies with `npm install`.
-
-3.3\. Open the Amazon ECR console at https://console.aws.amazon.com/ecr/repositories/.
-
-3.4\. Click on **Create repository**, type the name `backend` and click **Create repository**.
-
-**Note:** Copy the **URI** for the backend repository, you will use it later.
-
-3.5\. Click on the repository name **backend** and then click on **View push commands**.
-
-3.6\. Go back to your Cloud9 environment on backend folder and execute the 5 commands of **Push commands for backend** (macOS/Linux).
-
-## 4. Create the Application Load Balancer for the Backend
-
-4.1\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
-
-4.2\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
-
-4.3\. Choose **Create Load Balancer**.
-
-4.4\. On the **Select load balancer type** page, choose **Application Load Balancer** and then choose **Continue**.
-
-4.5\. Complete the **Configure Load Balancer** page as follows:
+2.5\. Complete the **Configure Load Balancer** page as follows:
 
   a\. For **Name**, type `backend` for your load balancer.
 
@@ -114,6 +82,38 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
   i\. In the **Configure Routing** section, for **Name** type `backend`, for Target type, choose to register your targets with an IP address and choose **Next: Register Targets**.
 
   j\. Choose **Next: Review**, click on **Create** and **Close**.
+
+## 3. Create Cloud9 instance for development
+
+3.1\. Open the AWS Cloud9 console at https://console.aws.amazon.com/cloud9/.
+
+3.2\. Click on **Create environment**.
+
+3.3\. Type a Name of `MyDevelopmentInstance`, and choose **Next step**.
+
+3.4\. Expand **Network settings (advanced)** and select your VPC ID and the Subnet ID (Public Subnet 01) that you copied earlier, and choose **Next step**.
+
+3.5\. Click on **Create environment**.
+
+3.6\. Now inside the **bash** terminal clone the reposiotry with `git clone https://github.com/aurbac/nodejs-back-and-angular-front.git`.
+
+3.7\. Install the Angular CLI globally with `npm install -g @angular/cli`.
+
+## 4. Create the backend docker image and upload to Amazon ECR
+
+4.1\. Inside your Cloud9 environment got to the backend folder `cd /home/ec2-user/environment/nodejs-back-and-angular-front/backend`
+
+4.2\. Install the node dependencies with `npm install`.
+
+4.3\. Open the Amazon ECR console at https://console.aws.amazon.com/ecr/repositories/.
+
+4.4\. Click on **Create repository**, type the name `backend` and click **Create repository**.
+
+**Note:** Copy the **URI** for the backend repository, you will use it later.
+
+4.5\. Click on the repository name **backend** and then click on **View push commands**.
+
+4.6\. Go back to your Cloud9 environment on backend folder and execute the 5 commands of **Push commands for backend** (macOS/Linux).
 
 ## 5. Create the Task Definition
 
@@ -141,7 +141,7 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
   g\. For the **Container Name** type `backend`.
 
-  h\. For the **Image** paste the URI repository that you copied earlier in step 3.4.
+  h\. For the **Image** paste the URI repository that you copied earlier in step 4.4.
 
   i\. For the **Port mappings** type `3000` and click on **Add**.
 
@@ -234,4 +234,5 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 6.16\. Test the DNS Name with `/messages` to see the messages.
 
 ## 7. Upload Angular application to Amazon S3
+
 
