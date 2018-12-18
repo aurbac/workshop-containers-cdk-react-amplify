@@ -99,6 +99,8 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
 3.7\. Install the Angular CLI globally with `npm install -g @angular/cli`.
 
+3.8\. Update the nodejs version with `nvm i v8`.
+
 ## 4. Create the backend docker image and upload to Amazon ECR
 
 4.1\. Inside your Cloud9 environment got to the backend folder `cd /home/ec2-user/environment/nodejs-back-and-angular-front/backend`
@@ -234,5 +236,32 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 6.16\. Test the DNS Name with `/messages` to see the messages.
 
 ## 7. Upload Angular application to Amazon S3
+
+7.1\. Open the Amazon S3 console at https://s3.console.aws.amazon.com/s3/.
+
+7.2\. Choose **Create bucket**.
+
+7.3\. In the **Bucket name** field, type a unique **DNS-compliant** name for your new bucket. Create your own bucket name using the follow naming guidelines:
+
+  - The name must be unique across all existing bucket names in Amazon S3.
+
+  - After you create the bucket you cannot change the name, so choose wisely.
+
+  - Choose a bucket name that reflects the objects in the bucket because the bucket name is visible in the URL that points to the objects that you're going to put in your bucket.
+
+7.4\. For **Region**, choose **US East (N. Virginia)** as the region where you want the bucket to reside.
+
+7.5\. Choose **Create**.
+
+7.6\. Inside your Cloud9 environment got to the frontend folder `cd /home/ec2-user/environment/nodejs-back-and-angular-front/frontend`
+
+7.7\. Install the node dependencies with `npm install`.
+
+7.7\. Edit the file **src/environments/environment.prod.ts** and change the value for **path** to your load balancer DNS Name.
+
+7.7\. Build the angular application for distrbution with `ng build --prod`.
+
+7.8\. Upload the distribution files to your bucket with `aws s3 sync dist/frontend/ s3://<your-bucket-name>/`, change <your-bucket-name> with your bucket name created.
+
 
 
