@@ -51,7 +51,7 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 | 10.1.0.0/16 | local | 
 | 0.0.0.0/0  | NAT Gateway (Select the only one) |
 
-## 2 Create Cloud9 instance for development
+## 2. Create Cloud9 instance for development
 
 2.1\. Open the AWS Cloud9 console at https://console.aws.amazon.com/cloud9/.
 
@@ -67,13 +67,25 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
 2.7\. Install the Angular CLI globally with `npm install -g @angular/cli`.
 
-## 3 Create the backend docker image and upload to Amazon ECR
+## 3. Create the backend docker image and upload to Amazon ECR
 
 3.1\. Inside your Cloud9 environment got to the backend folder `cd /home/ec2-user/environment/nodejs-back-and-angular-front/backend`
 
 3.2\. Install the node dependencies with `npm install`.
 
-3.3\. Create the docker image with `docker build -t backend .`.
+3.3\. Open the Amazon ECR console at https://us-east-1.console.aws.amazon.com/ecr/repositories/.
+
+3.4\. Click on **Create repository**, type the name `backend` and click **Create repository**.
+
+3.5\. Click on the repository name **backend** and then click on **View push commands**.
+
+3.6\. Go back to your Cloud9 environment on backend folder and execute the 5 commands of **Push commands for backend** (macOS/Linux).
+
+
+
+
+
+
 
 
 
