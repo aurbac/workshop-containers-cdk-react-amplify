@@ -83,7 +83,7 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
 3.6\. Go back to your Cloud9 environment on backend folder and execute the 5 commands of **Push commands for backend** (macOS/Linux).
 
-## 4. Create the backend docker image and upload to Amazon ECR
+## 4. Create the Application Load Balancer for the Backend
 
 4.1\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 
@@ -95,25 +95,25 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
 4.5\. Complete the **Configure Load Balancer** page as follows:
 
-a\. For Name, type `backend` for your load balancer.
+  a\. For Name, type `backend` for your load balancer.
 
-b\. For Scheme, use an internet-facing load balancer routes requests from clients over the internet to targets.
+  b\. For Scheme, use an internet-facing load balancer routes requests from clients over the internet to targets.
 
-c\. For IP address type, choose ipv4 to support IPv4 addresses only or dualstack to support both IPv4 and IPv6 addresses.
+  c\. For IP address type, choose ipv4 to support IPv4 addresses only or dualstack to support both IPv4 and IPv6 addresses.
 
-d\. For Listeners, the default is a listener that accepts HTTP traffic on port 80.
+  d\. For Listeners, the default is a listener that accepts HTTP traffic on port 80.
 
-e\. For VPC, select the **My VPC**.
+  e\. For VPC, select the **My VPC**.
 
-f\. For Availability Zones, select the check box for the Availability Zones to enable for your load balancer. For us-east-1a select the **Public Subnet 01** and for us-east-1b select **Public Subnet 02**.
+  f\. For Availability Zones, select the check box for the Availability Zones to enable for your load balancer. For us-east-1a select the **Public Subnet 01** and for us-east-1b select **Public Subnet 02**.
 
-g\. Choose **Next: Configure Security Settings** and choose **Next: Configure Security Groups**.
+  g\. Choose **Next: Configure Security Settings** and choose **Next: Configure Security Groups**.
 
-h\. Select **Create a new security group**, for the Security group name type `backend-alb` and choose **Next: Configure Routing**.
+  h\. Select **Create a new security group**, for the Security group name type `backend-alb` and choose **Next: Configure Routing**.
 
-i\. In the Configure Routing sectio, for Name type `backend`, for Target type, choose to register your targets with an IP address and choose **Next: Register Targets**.
+  i\. In the Configure Routing sectio, for Name type `backend`, for Target type, choose to register your targets with an IP address and choose **Next: Register Targets**.
 
-j\. Choose **Next: Review**, click on **Create** and **Close**.
+  j\. Choose **Next: Review**, click on **Create** and **Close**.
 
 
 
