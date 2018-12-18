@@ -117,13 +117,15 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
 ## 5. Create the Task Definition
 
-5.1\. Open the Amazon ECS console at https://console.aws.amazon.com/ecs/home?#/taskDefinitions
+5.1\. Open the Amazon ECS console at https://console.aws.amazon.com/ecs/.
 
-5.2\. Choose **Create new Task Definition**.
+5.2\. In the navigation pane, under **Amazon ECS**, choose **Task Definitions**.
 
-5.3\. On the **Select launch type compatibility** use **FARGATE** and click on **Next step**.
+5.3\. Choose **Create new Task Definition**.
 
-5.4\. Complete the **Configure task and container definitions** page as follows:
+5.4\. On the **Select launch type compatibility** use **FARGATE** and click on **Next step**.
+
+5.5\. Complete the **Configure task and container definitions** page as follows:
 
   a\. For **Task Definition Name** type `backend`.
 
@@ -144,4 +146,76 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
   i\. For the **Port mappings** type `3000` and click on **Add**.
 
   j\. Click on **Create**.
+
+## 6. Create an Amazon ECS cluster and Service for the backend
+
+6.1\. Open the Amazon ECS console at https://console.aws.amazon.com/ecs/.
+
+6.2\. In the navigation pane, under **Amazon ECS**, choose **Clusters**.
+
+6.3\. Choose **Create Cluster**.
+
+6.4\. Select the option **Networking only - Powered by AWS Fargate** and click on **Next step**.
+
+6.5\. For **Cluster name** type `backend-cluster` and click on **Create**.
+
+6.6\. Click on **View Cluster**.
+
+6.7\. In the **Services** sections click on **Create**.
+
+6.8\. Complete the **Configure service** page as follows:
+
+  a\. For **Launch type** select `FARGATE`.
+
+  b\. For **Task Definition** select `backend`.
+
+  c\. For **Service name** type `backend`.
+
+  d\. For **Number of tasks** type `1`.
+
+  e\. Click on **Next step**.
+
+6.9\. Complete the **Configure network** page as follows:
+
+  a\. For **Cluster VPC** select `My VPC`.
+
+  b\. For **Subnets** select `Private Subnet 01` and `Private Subnet 02`.
+
+  c\. For **Security Groups** click on **Edit**.
+
+  d\. For **Inbound rules for security group** change the **Type** to `Custom TCP`.
+
+  e\. For **Port range** type `3000` and click on **Save**.
+
+  f\. For **Load balancer type** select **Application Load Balancer**.
+
+  g\. For **Load balancer name** select `backend`.
+
+  h\. Click on **Add to load balancer**.
+
+  i\. For **Target group name** select `backend`.
+
+  j\. Click on **Next step**.
+
+6.9\. Complete the **Set Auto Scaling (optional)** page as follows:
+
+  a\. For **Service Auto Scaling** select `Configure Service Auto Scaling to adjust your service’s desired count`.
+
+  b\. For **Minimum number of tasks** type 2.
+
+  c\. For **Desired number of tasks** type 2.
+
+  d\. For **Maximum number of tasks** type 6.
+
+  e\. For **IAM role for Service Auto Scaling** select `Create new role`.
+
+  f\. For **Policy name** type `RequestCount`.
+
+  g\. For **ECS service metric** select `ALBRequestCountPerTarget`.
+
+  h\. For **Target value** type `100`.
+
+  i\. Click on **Next step**.
+
+6.10\. Click on **Create Service**.
 
