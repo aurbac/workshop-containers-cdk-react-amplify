@@ -1,0 +1,11 @@
+<mat-card class="example-card">
+
+  <mat-card-header>
+    <mat-card-title>Messages</mat-card-title>
+  </mat-card-header>
+
+  <div *ngFor="let message of apiService.messages">
+    <mat-card>{{ message.message }}</mat-card>
+  </div>
+
+</mat-card>

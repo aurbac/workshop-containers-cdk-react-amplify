@@ -35,6 +35,8 @@ bower_components
 build/Release
 
 # Dependency directories
+frontend/node_modules/
+frontend/jspm_packages/
 backend/node_modules/
 backend/jspm_packages/
 node_modules/
@@ -81,3 +83,52 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+
+
+
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/frontend/dist
+/frontend/tmp
+/frontend/out-tsc
+
+# dependencies
+/frontend/node_modules
+
+# profiling files
+/frontend/chrome-profiler-events.json
+/frontend/speed-measure-plugin.json
+
+# IDEs and editors
+/frontend/.idea
+/frontend/.project
+/frontend/.classpath
+/frontend/.c9/
+/frontend/*.launch
+/frontend/.settings/
+/frontend/*.sublime-workspace
+
+# IDE - VSCode
+/frontend/.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+
+# misc
+/frontend/.sass-cache
+/frontend/connect.lock
+/frontend/coverage
+/frontend/libpeerconnection.log
+/frontend/npm-debug.log
+/frontend/yarn-error.log
+/frontend/testem.log
+/frontend/typings
+
+# System Files
+/frontend/.DS_Store
+/frontend/Thumbs.db
