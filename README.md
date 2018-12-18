@@ -10,7 +10,7 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
 1.3\. For the Name tag type `My VPC` and use the IPv4 CIDR block of `10.1.0.0/16`, click on **Create** and click on **Close**.
 
-**Note** Copy the **VPC ID** for the Public Subnet 01, you will use it later.
+**Note:** Copy the **VPC ID** for the Public Subnet 01, you will use it later.
 
 1.4\. In the navigation pane, choose Subnets, we are going to create four subnets as follows:
 
@@ -21,7 +21,7 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 | Private Subnet 01  | My VPC | us-east-1a | 10.1.2.0/24 |
 | Private Subnet 02  | My VPC | us-east-1b | 10.1.3.0/24 |
 
-**Note** Copy the **Subnet ID** for the Public Subnet 01, you will use it later.
+**Note:** Copy the **Subnet ID** for the Public Subnet 01, you will use it later.
 
 1.5\. In the navigation pane, choose Route Tables and click **Create route table**.
 
@@ -73,17 +73,47 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
 3.2\. Install the node dependencies with `npm install`.
 
-3.3\. Open the Amazon ECR console at https://us-east-1.console.aws.amazon.com/ecr/repositories/.
+3.3\. Open the Amazon ECR console at https://console.aws.amazon.com/ecr/repositories/.
 
 3.4\. Click on **Create repository**, type the name `backend` and click **Create repository**.
+
+**Note:** Copy the **URI** for the backend repository, you will use it later.
 
 3.5\. Click on the repository name **backend** and then click on **View push commands**.
 
 3.6\. Go back to your Cloud9 environment on backend folder and execute the 5 commands of **Push commands for backend** (macOS/Linux).
 
+## 4. Create the backend docker image and upload to Amazon ECR
 
+4.1\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 
+4.2\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
 
+4.3\. Choose **Create Load Balancer**.
+
+4.4\. On the **Select load balancer type** page, choose **Application Load Balancer** and then choose **Continue**.
+
+4.5\. Complete the **Configure Load Balancer** page as follows:
+
+a\. For Name, type `backend` for your load balancer.
+
+b\. For Scheme, use an internet-facing load balancer routes requests from clients over the internet to targets.
+
+c\. For IP address type, choose ipv4 to support IPv4 addresses only or dualstack to support both IPv4 and IPv6 addresses.
+
+d\. For Listeners, the default is a listener that accepts HTTP traffic on port 80.
+
+e\. For VPC, select the **My VPC**.
+
+f\. For Availability Zones, select the check box for the Availability Zones to enable for your load balancer. For us-east-1a select the **Public Subnet 01** and for us-east-1b select **Public Subnet 02**.
+
+g\. Choose **Next: Configure Security Settings** and choose **Next: Configure Security Groups**.
+
+h\. Select **Create a new security group**, for the Security group name type `backend-alb` and choose **Next: Configure Routing**.
+
+i\. In the Configure Routing sectio, for Name type `backend`, for Target type, choose to register your targets with an IP address and choose **Next: Register Targets**.
+
+j\. Choose **Next: Review**, click on **Create** and **Close**.
 
 
 
