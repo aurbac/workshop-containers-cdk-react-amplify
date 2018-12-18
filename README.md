@@ -263,5 +263,51 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
 7.8\. Upload the distribution files to your bucket with `aws s3 sync dist/frontend/ s3://<your-bucket-name>/`, change `<your-bucket-name>` with your bucket name created.
 
+## 8. Public you application using CloudFront
 
+8.1\. Open the Amazon CloudFront console at https://console.aws.amazon.com/cloudfront/.
+
+8.2\. Choose **Create Distribution**.
+
+8.3\. Choose **Get Started**.
+
+8.4\. Complete the **Origin Settings** section as follows:
+
+  a\. For **Origin Domain Name** select your bucket name created.
+
+  b\. For **Restrict Bucket Access** select **Yes**.
+
+  c\. For **Origin Access Identity** select **Create a New Identity**.
+
+  d\. For **Grant Read Permissions on Bucke** select **Yes, Update Bucket Policy**.
+
+8.5\. In the **Distribution Settings** section, for **Default Root Object** type `index.html`.
+
+8.6\. Click on **Create Distribution** and wait some minutes to apply the changes.
+
+8.7\. Copy the **Domain name** of your CloudFront distribution to test in your browser, you will see the message **Welcome to frontend!**.
+
+8.8\. Test in your browser the application messages `<domain-name>/messages`, you will see an **Access Denied** error.
+
+8.9\. Finally, now we need to configure **403** or **404** errors to redirect the traffic to index.html to resolve /messages.
+
+8.10\. Select your distribution and click on **Distribution Settings**.
+
+8.11\. Go to **Error Pages** Tab.
+
+8.12\. Click on **Create Custom Error Response**.
+
+8.13\. For **HTTP Error Code** select **403: Forbidden**.
+
+8.14\. For **Customize Error Response** select **Yes**.
+
+8.15\. For **Response Page Path** type `/index.html`.
+
+8.16\. For **HTTP Response Code** select **200: Ok**.
+
+8.17\. Click on **Create**.
+
+8.18\. Repeat the process to create a new Custom Error Response for the **HTTP Error Code 404: Not Found**. Wait some minutes to apply the changes.
+
+8.19\. Now test in your browser the application messages `<domain-name>/messages`, you will see the messages from backend.
 
