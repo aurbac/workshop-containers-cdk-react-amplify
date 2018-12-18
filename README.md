@@ -169,6 +169,8 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
   b\. For **Task Definition** select `backend`.
 
+  b\. For **Cluster** select `backend-cluster`.
+
   c\. For **Service name** type `backend`.
 
   d\. For **Number of tasks** type `1`.
@@ -180,6 +182,8 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
   a\. For **Cluster VPC** select `My VPC`.
 
   b\. For **Subnets** select `Private Subnet 01` and `Private Subnet 02`.
+
+  b\. For **Auto-assign public IP** select `DISABLED`.
 
   c\. For **Security Groups** click on **Edit**.
 
@@ -197,15 +201,15 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
   j\. Click on **Next step**.
 
-6.9\. Complete the **Set Auto Scaling (optional)** page as follows:
+6.10\. Complete the **Set Auto Scaling (optional)** page as follows:
 
   a\. For **Service Auto Scaling** select `Configure Service Auto Scaling to adjust your service’s desired count`.
 
-  b\. For **Minimum number of tasks** type 2.
+  b\. For **Minimum number of tasks** type `2`.
 
-  c\. For **Desired number of tasks** type 2.
+  c\. For **Desired number of tasks** type `2`.
 
-  d\. For **Maximum number of tasks** type 6.
+  d\. For **Maximum number of tasks** type `6`.
 
   e\. For **IAM role for Service Auto Scaling** select `Create new role`.
 
@@ -217,5 +221,17 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
   i\. Click on **Next step**.
 
-6.10\. Click on **Create Service**.
+6.11\. Click on **Create Service**.
+
+6.12\. Click on **View Service**.
+
+6.13\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+
+6.14\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
+
+6.15\. Select the **backend** balancer, in the **Description** section copy the **DNS Name** to test in your bworser, you will see the code for the AWS Region.
+
+6.16\. Test the DNS Name with `/messages` to see the messages.
+
+## 7. Upload Angular application to Amazon S3
 
