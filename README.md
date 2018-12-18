@@ -311,3 +311,6 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS 
 
 8.19\. Now test in your browser the application messages `<domain-name>/messages`, you will see the messages from backend.
 
+#### Congratulations, now you have an Angular Application stored on Amazon S3 and a Nodejs backend using containers with Amazon ECS.
+
+
