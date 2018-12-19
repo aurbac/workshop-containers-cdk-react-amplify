@@ -1,6 +1,8 @@
 # Application Backend with Nodejs and Frontend with Angular
 
-Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS and Amazon CloudFront.
+Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS, Amazon S3 and Amazon CloudFront.
+
+![Nodejs Angular](https://github.com/aurbac/nodejs-back-and-angular-front/raw/master/images/nodejs-angular.png)
 
 ## 1. Create a VPC with two public and two private subnets
 
