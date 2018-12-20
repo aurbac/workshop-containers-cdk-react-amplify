@@ -99,9 +99,9 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS,
 
 3.6\. Now inside the **bash** terminal clone the reposiotry with `git clone https://github.com/aurbac/nodejs-back-and-angular-front.git`.
 
-3.7\. Install the Angular CLI globally with `npm install -g @angular/cli`.
+3.7\. Update the nodejs to version 8 with `nvm i v8`.
 
-3.8\. Update the nodejs version with `nvm i v8`.
+3.8\. Install the Angular CLI globally with `npm install -g @angular/cli`.
 
 ## 4. Create the backend docker image and upload to Amazon ECR
 
@@ -133,7 +133,7 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS,
 
   a\. For **Task Definition Name** type `backend`.
 
-  b\. For **Task Role** select `None`.
+  b\. For **Task Role** select `None` if available, otherwise leave it the same.
 
   c\. For **Task execution role** select `Create new role`.
 
@@ -215,7 +215,7 @@ Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS,
 
   d\. For **Maximum number of tasks** type `6`.
 
-  e\. For **IAM role for Service Auto Scaling** select `Create new role`.
+  e\. For **IAM role for Service Auto Scaling** select `Create new role` if available, otherwise leave it the same..
 
   f\. For **Policy name** type `RequestCount`.
 
