@@ -16,13 +16,17 @@ npm install
 
 1.3\. Open the Amazon ECR console at https://console.aws.amazon.com/ecr/repositories/.
 
-1.4\. Click on **Create repository**, type the name `backend` and click **Create repository**.
+1.4\. Click on **Create repository**, for the **Repository name** type `backend` and click **Create repository**.
+
+![Repository name](../images/repository-name.png)
 
 **Note:** Copy the **URI** for the backend repository, you will use it later.
 
 1.5\. Click on the repository name **backend** and then click on **View push commands**.
 
 1.6\. Go back to your Cloud9 environment in your backend folder and execute the 5 commands of **Push commands for backend** (macOS/Linux).
+
+![Repository Push Commands](../images/repository-push-commands.png)
 
 ## 2. Create the Task Definition
 

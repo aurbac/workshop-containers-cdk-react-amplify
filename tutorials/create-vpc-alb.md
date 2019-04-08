@@ -84,12 +84,12 @@
 
 3.5\. Complete the **Configure Load Balancer** page as follows:
 
-* **Name**: `backend`
-* **Scheme**: **internet-facing**
-* **IP address type**: **ipv4**
-* **Listeners**: The default listener that accepts HTTP traffic on port 80.
-* **VPC**: **My VPC**
-* **Availability Zones**: Select the check box for the Availability Zones to enable for your load balancer. For **us-east-1a** select the **Public Subnet 01** and for **us-east-1b** select **Public Subnet 02**.
+* **``Name``**: `backend`
+* **``Scheme``**: **``internet-facing``**
+* **``IP address type``**: **``ipv4``**
+* **``Listeners``**: The default listener that accepts **``HTTP``** traffic on port **``80``**.
+* **``VPC``**: **``My VPC``**
+* **``Availability Zones``**: Select the check box for the Availability Zones to enable for your load balancer. For **``us-east-1a``** select the **``Public Subnet 01``** and for **``us-east-1b``** select **``Public Subnet 02``**.
 
 3.6\. Choose **Next: Configure Security Settings** and choose **Next: Configure Security Groups**.
 
