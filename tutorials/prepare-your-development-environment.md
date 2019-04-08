@@ -6,15 +6,27 @@
 
 1.2\. Click on **Create environment**.
 
+![Cloud9 Create environment](../images/cloud9-create.png)
+
 1.3\. Type a Name of `MyDevelopmentInstance`, and choose **Next step**.
+
+![Cloud9 name environment](../images/cloud9-name.png)
 
 1.4\. Expand **Network settings (advanced)** and select your VPC ID and the Subnet ID (Public Subnet 01) that you copied earlier, and choose **Next step**.
 
 1.5\. Click on **Create environment**.
 
+1.6\. Wait some seconds until your development environment is ready, you will see the following screen.
+
+![Cloud9 Env](../images/cloud9-env.png)
+
 ## 2. Install requirements
 
-2.1\. Inside the Cloud9 environment, in the **bash** terminal, clone the reposiotry with `git clone https://github.com/aurbac/nodejs-back-and-angular-front.git`.
+2.1\. Inside the Cloud9 environment, in the **bash** terminal, clone the reposiotry.
+
+```
+git clone https://github.com/aurbac/nodejs-back-and-angular-front.git
+```
 
 2.2\. Update the nodejs to version 8.
 

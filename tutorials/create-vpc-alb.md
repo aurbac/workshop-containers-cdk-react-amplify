@@ -78,26 +78,23 @@
 
 3.3\. Choose **Create Load Balancer**.
 
-3.4\. On the **Select load balancer type** page, choose **Application Load Balancer** and then choose **Continue**.
+3.4\. On the **Select load balancer type** page, choose **Application Load Balancer** and then choose **Create**.
+
+![ALB Select](../images/alb-select.png)
 
 3.5\. Complete the **Configure Load Balancer** page as follows:
 
-  a\. For **Name**, type `backend` for your load balancer.
+* **Name**: `backend`
+* **Scheme**: **internet-facing**
+* **IP address type**: **ipv4**
+* **Listeners**: The default listener that accepts HTTP traffic on port 80.
+* **VPC**: **My VPC**
+* **Availability Zones**: Select the check box for the Availability Zones to enable for your load balancer. For **us-east-1a** select the **Public Subnet 01** and for **us-east-1b** select **Public Subnet 02**.
 
-  b\. For **Scheme**, use an internet-facing load balancer routes requests from clients over the internet to targets.
+3.6\. Choose **Next: Configure Security Settings** and choose **Next: Configure Security Groups**.
 
-  c\. For **IP address type**, choose ipv4 to support IPv4 addresses only or dualstack to support both IPv4 and IPv6 addresses.
+3.7\. Select **Create a new security group**, for the Security group name type `backend-alb` and choose **Next: Configure Routing**.
 
-  d\. For **Listeners**, the default is a listener that accepts HTTP traffic on port 80.
+3.8\. In the **Configure Routing** section, for **Name** type `backend`, for Target type, choose to register your targets with an **IP** address and choose **Next: Register Targets**.
 
-  e\. For **VPC**, select the `My VPC`.
-
-  f\. For **Availability Zones**, select the check box for the Availability Zones to enable for your load balancer. For us-east-1a select the **Public Subnet 01** and for us-east-1b select **Public Subnet 02**.
-
-  g\. Choose **Next: Configure Security Settings** and choose **Next: Configure Security Groups**.
-
-  h\. Select **Create a new security group**, for the Security group name type `backend-alb` and choose **Next: Configure Routing**.
-
-  i\. In the **Configure Routing** section, for **Name** type `backend`, for Target type, choose to register your targets with an IP address and choose **Next: Register Targets**.
-
-  j\. Choose **Next: Review**, click on **Create** and **Close**.
+3.9\. Choose **Next: Review**, click on **Create** and **Close**.
