@@ -28,23 +28,50 @@ npm install
 
 ![Repository Push Commands](../images/repository-push-commands.png)
 
-## 2. Create the Task Definition
+1.7\. After pushing to AWS repository you will see the following image.
 
-2.1\. Open the Amazon ECS console at https://console.aws.amazon.com/ecs/.
+![Image](../images/ecr-image.png)
 
-2.2\. In the navigation pane, under **Amazon ECS**, choose **Task Definitions**.
+## 2. Create your Amazon ECS Task Execution IAM Role
 
-2.3\. Choose **Create new Task Definition**.
+2.1\. Open the IAM console at https://console.aws.amazon.com/iam/.
 
-2.4\. On the **Select launch type compatibility** use **FARGATE** and click on **Next step**.
+2.2\. Choose **Roles**, then **Create role**.
 
-2.5\. Complete the **Configure task and container definitions** page as follows:
+2.3\. Choose **Elastic Container Service** from the list of services, scroll down and choose **Elastic Container Service Task** that allows ECS tasks to call AWS services on your behalf for your use case, then **Next: Permissions**.
+
+![Select Service Role](../images/ecs-role-create.png)
+
+2.4\. For **attach permissions policies** filter by typing `AmazonECSTaskExecutionRolePolicy` and from the list select **AmazonECSTaskExecutionRolePolicy**, choose **Next: Tags**.
+
+![Role Policies](../images/iam-role-policies.png)
+
+2.5\. For **Add tags** choose **Next: Review**.
+
+2.6\. Give your role a **Name**, type `ecsTaskExecutionRole` and choose **Create Role**.
+
+
+## 3. Create the Task Definition
+
+3.1\. Open the Amazon ECS console at https://console.aws.amazon.com/ecs/.
+
+3.2\. In the navigation pane, under **Amazon ECS**, choose **Task Definitions**.
+
+3.3\. Choose **Create new Task Definition**.
+
+![Create Task Definition](../images/ecs-create-task.png)
+
+3.4\. On the **Select launch type compatibility** use **FARGATE** and click on **Next step**.
+
+![Select Fargate](../images/ecs-task-fargate.png)
+
+3.5\. Complete the **Configure task and container definitions** page as follows:
 
   a\. For **Task Definition Name** type `backend`.
 
   b\. For **Task Role** select `None` if available, otherwise leave it the same.
 
-  c\. For **Task execution role** select `Create new role`.
+  c\. For **Task execution role** select `ecsTaskExecutionRole`.
 
   d\. For **Task memory (GB)** select `0.5GB`.
 
@@ -60,23 +87,23 @@ npm install
 
   j\. Click on **Create**.
 
-## 3. Create an Amazon ECS cluster and Service for the backend
+## 4. Create an Amazon ECS cluster and Service for the backend
 
-3.1\. Open the Amazon ECS console at https://console.aws.amazon.com/ecs/.
+4.1\. Open the Amazon ECS console at https://console.aws.amazon.com/ecs/.
 
-3.2\. In the navigation pane, under **Amazon ECS**, choose **Clusters**.
+4.2\. In the navigation pane, under **Amazon ECS**, choose **Clusters**.
 
-3.3\. Choose **Create Cluster**.
+4.3\. Choose **Create Cluster**.
 
-3.4\. Select the option **Networking only - Powered by AWS Fargate** and click on **Next step**.
+4.4\. Select the option **Networking only - Powered by AWS Fargate** and click on **Next step**.
 
-3.5\. For **Cluster name** type `backend-cluster` and click on **Create**.
+4.5\. For **Cluster name** type `backend-cluster` and click on **Create**.
 
-3.6\. Click on **View Cluster**.
+4.6\. Click on **View Cluster**.
 
-3.7\. In the **Services** sections click on **Create**.
+4.7\. In the **Services** sections click on **Create**.
 
-3.8\. Complete the **Configure service** page as follows:
+4.8\. Complete the **Configure service** page as follows:
 
   a\. For **Launch type** select `FARGATE`.
 
@@ -90,7 +117,7 @@ npm install
 
   e\. Click on **Next step**.
 
-3.9\. Complete the **Configure network** page as follows:
+4.9\. Complete the **Configure network** page as follows:
 
   a\. For **Cluster VPC** select `My VPC`.
 
@@ -114,7 +141,7 @@ npm install
 
   j\. Click on **Next step**.
 
-3.10\. Complete the **Set Auto Scaling (optional)** page as follows:
+4.10\. Complete the **Set Auto Scaling (optional)** page as follows:
 
   a\. For **Service Auto Scaling** select `Configure Service Auto Scaling to adjust your service’s desired count`.
 
@@ -134,14 +161,14 @@ npm install
 
   i\. Click on **Next step**.
 
-3.11\. Click on **Create Service**.
+4.11\. Click on **Create Service**.
 
-3.12\. Click on **View Service**.
+4.12\. Click on **View Service**.
 
-3.13\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+4.13\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 
-3.14\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
+4.14\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
 
-3.15\. Select the **backend** balancer, in the **Description** section copy the **DNS Name** to test in your bworser, you will see the code for the AWS Region.
+4.15\. Select the **backend** balancer, in the **Description** section copy the **DNS Name** to test in your bworser, you will see the code for the AWS Region.
 
-3.16\. Test the DNS Name with `/messages` to see the messages.
+4.16\. Test the DNS Name with `/messages` to see the messages.
