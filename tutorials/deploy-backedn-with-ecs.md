@@ -67,25 +67,21 @@ npm install
 
 3.5\. Complete the **Configure task and container definitions** page as follows:
 
-  a\. For **Task Definition Name** type `backend`.
+* **``Task Definition Name``**: **``backend``**
+* **``Task Role``**: Select **``None``**
+* **``Task execution role``**: Select **``ecsTaskExecutionRole``**
+* **``Task memory (GB)``**: Select **``0.5GB``**
+* **``Task CPU (vCPU)``**: select **``0.25 vCPU``**
 
-  b\. For **Task Role** select `None` if available, otherwise leave it the same.
+3.6\. Click on **Add container** and complete as follow and choose **Add**:
 
-  c\. For **Task execution role** select `ecsTaskExecutionRole`.
+* **``Container Name``**: **``backend``**
+* **``Image``**: paste the URI repository that you copied earlier in step 1.4.
+* **``Port mappings``**: **``3000``** 
 
-  d\. For **Task memory (GB)** select `0.5GB`.
+![Task Container](../images/ecs-task-container.png)
 
-  e\. For **Task CPU (vCPU)** select `0.25 vCPU`.
-
-  f\. Click on **Add container**.
-
-  g\. For the **Container Name** type `backend`.
-
-  h\. For the **Image** paste the URI repository that you copied earlier in step 4.4.
-
-  i\. For the **Port mappings** type `3000` and click on **Add**.
-
-  j\. Click on **Create**.
+3.7\. Click on **Create**.
 
 ## 4. Create an Amazon ECS cluster and Service for the backend
 
@@ -95,7 +91,11 @@ npm install
 
 4.3\. Choose **Create Cluster**.
 
+![Create Cluster](../images/ecs-create-cluster.png)
+
 4.4\. Select the option **Networking only - Powered by AWS Fargate** and click on **Next step**.
+
+![Select Fargate](../images/ecs-cluster-select-fargate.png)
 
 4.5\. For **Cluster name** type `backend-cluster` and click on **Create**.
 
@@ -103,63 +103,55 @@ npm install
 
 4.7\. In the **Services** sections click on **Create**.
 
+![Create Service](../images/ecs-create-service.png)
+
 4.8\. Complete the **Configure service** page as follows:
 
-  a\. For **Launch type** select `FARGATE`.
+* **``Launch type``**: **``FARGATE``**
+* **``Task Definition``**: **``backend``**
+* **``Cluster``**: **``backend-cluster``**
+* **``Service name``**: **``backend``**
+* **``Number of tasks``**: **``1``** 
 
-  b\. For **Task Definition** select `backend`.
+![Configure Service](../images/ecs-configure-service.png)
 
-  b\. For **Cluster** select `backend-cluster`.
+4.9\. Click on **Next step**.
 
-  c\. For **Service name** type `backend`.
+4.10\. Complete the **Configure network** page as follows:
 
-  d\. For **Number of tasks** type `1`.
+* **``Cluster VPC``**: `My VPC`
+* **``Subnets``**: Select `Private Subnet 01` and `Private Subnet 02`
+* **``Auto-assign public IP``**: `DISABLED`
 
-  e\. Click on **Next step**.
+4.11\. For **``Security Groups``** click on **Edit**.
 
-4.9\. Complete the **Configure network** page as follows:
+4.12\. Complete as follows and click on **Save**:
 
-  a\. For **Cluster VPC** select `My VPC`.
+* **``Type``**: **``Custom TCP``**
+* **``Port range``**: **``3000``**
 
-  b\. For **Subnets** select `Private Subnet 01` and `Private Subnet 02`.
+4.13\. For **Load balancer type** select **``Application Load Balancer``**.
 
-  b\. For **Auto-assign public IP** select `DISABLED`.
+4.14\. For **Load balancer name** select **``backend``**.
 
-  c\. For **Security Groups** click on **Edit**.
+4.11\. Click on **Add to load balancer**.
 
-  d\. For **Inbound rules for security group** change the **Type** to `Custom TCP`.
+4.12\. For **Target group name** select **``backend``**.
 
-  e\. For **Port range** type `3000` and click on **Save**.
-
-  f\. For **Load balancer type** select **Application Load Balancer**.
-
-  g\. For **Load balancer name** select `backend`.
-
-  h\. Click on **Add to load balancer**.
-
-  i\. For **Target group name** select `backend`.
-
-  j\. Click on **Next step**.
+4.12\. Click on **Next step**.
 
 4.10\. Complete the **Set Auto Scaling (optional)** page as follows:
 
-  a\. For **Service Auto Scaling** select `Configure Service Auto Scaling to adjust your service’s desired count`.
+* **``Service Auto Scaling``**: **``Configure Service Auto Scaling to adjust your service’s desired count``**
+* **``Minimum number of tasks``**: **``2``**
+* **``Desired number of tasks``**: **``2``**
+* **``Maximum number of tasks``**: **``6``**
+* **``IAM role for Service Auto Scaling``**: Select `Create new role` if available, otherwise leave it the same.
+* **``Policy name``**: **``RequestCount``**
+* **``ECS service metric``**: **``ALBRequestCountPerTarget``**
+* **``Target value``**: **``100``**
 
-  b\. For **Minimum number of tasks** type `2`.
-
-  c\. For **Desired number of tasks** type `2`.
-
-  d\. For **Maximum number of tasks** type `6`.
-
-  e\. For **IAM role for Service Auto Scaling** select `Create new role` if available, otherwise leave it the same..
-
-  f\. For **Policy name** type `RequestCount`.
-
-  g\. For **ECS service metric** select `ALBRequestCountPerTarget`.
-
-  h\. For **Target value** type `100`.
-
-  i\. Click on **Next step**.
+4.11\. Click on **Next step**.
 
 4.11\. Click on **Create Service**.
 
