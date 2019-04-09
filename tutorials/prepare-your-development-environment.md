@@ -8,11 +8,11 @@
 
 ![Cloud9 Create environment](../images/cloud9-create.png)
 
-1.3\. Type a Name of `MyDevelopmentInstance`, and choose **Next step**.
+1.3\. For the **Name** type `MyDevelopmentInstance`, and choose **Next step**.
 
 ![Cloud9 name environment](../images/cloud9-name.png)
 
-1.4\. Expand **Network settings (advanced)** and select your VPC ID and the Subnet ID (Public Subnet 01) that you copied earlier, and choose **Next step**.
+1.4\. For the **Environment settings** use the default values and choose **Next step**.
 
 1.5\. Click on **Create environment**.
 
