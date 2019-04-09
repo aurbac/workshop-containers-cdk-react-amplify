@@ -92,4 +92,4 @@ aws s3 sync dist/frontend/ s3://<your-bucket-name>/
 
 #### Congratulations, now you have an Angular Application stored on Amazon S3 and a Nodejs backend using containers with Amazon ECS.
 
-![Angular Application](images/angular.png)
+![Angular Application](../images/angular.png)
