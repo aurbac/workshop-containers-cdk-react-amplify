@@ -157,9 +157,11 @@ npm install
 
 5.16\. For **Target group name** select **``backend``**.
 
-5.17\. Click on **Next step**.
+5.17\. Uncheck the **Enable service discovery integration** and click on **Next step**.
 
-5.18\. Complete the **Set Auto Scaling (optional)** page as follows:
+![Service SG](../images/ecs-service-discovery-uncheck.png)
+
+5.18\. Complete the **Set Auto Scaling (optional)** page as follows and click on **Next step**.
 
 * **``Service Auto Scaling``**: **``Configure Service Auto Scaling to adjust your service’s desired count``**
 * **``Minimum number of tasks``**: **``2``**
@@ -170,16 +172,16 @@ npm install
 * **``ECS service metric``**: **``ALBRequestCountPerTarget``**
 * **``Target value``**: **``100``**
 
-5.19\. Click on **Next step**.
+![Service AS](../images/ecs-as.png)
 
-5.20\. Click on **Create Service**.
+5.19\. Click on **Create Service** and click on **View Service** once the creation is finished.
 
-5.21\. Click on **View Service**.
+5.20\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 
-5.22\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+5.21\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
 
-5.23\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
+5.22\. Select the **backend** balancer, in the **Description** section copy the **DNS Name** to test in your bworser, you will see the code for the AWS Region.
 
-5.24\. Select the **backend** balancer, in the **Description** section copy the **DNS Name** to test in your bworser, you will see the code for the AWS Region.
+5.23\. Test the DNS Name with `/messages` to see the messages.
 
-5.25\. Test the DNS Name with `/messages` to see the messages.
+![ECS ALB](../images/ecs-alb.png)
