@@ -50,7 +50,6 @@ npm install
 
 2.6\. Give your role a **Name**, type `ecsTaskExecutionRole` and choose **Create Role**.
 
-
 ## 3. Create the Task Definition
 
 3.1\. Open the Amazon ECS console at https://console.aws.amazon.com/ecs/.
@@ -83,29 +82,47 @@ npm install
 
 3.7\. Click on **Create**.
 
-## 4. Create an Amazon ECS cluster and Service for the backend
+## 4. Create your Amazon ECS Service Auto Scaling IAM Role
 
-4.1\. Open the Amazon ECS console at https://console.aws.amazon.com/ecs/.
+4.1\. Open the IAM console at https://console.aws.amazon.com/iam/.
 
-4.2\. In the navigation pane, under **Amazon ECS**, choose **Clusters**.
+4.2\. Choose **Roles**, then **Create role**.
 
-4.3\. Choose **Create Cluster**.
+4.3\. Choose **Elastic Container Service** from the list of services, scroll down and choose **Elastic Container Service Autoscale** that allows Auto Scaling to access and update ECS services, then **Next: Permissions**.
+
+![Select Service Role](../images/ecs-role-create-as.png)
+
+4.4\. In **attach permissions policies**, the **AmazonEC2ContainerServiceAutoscaleRole** policy is selected, choose **Next: Tags**.
+
+![Role Policies](../images/iam-role-policies-as.png)
+
+4.5\. For **Add tags** choose **Next: Review**.
+
+4.6\. Give your role a **Name**, type `ecsAutoscaleRole` and choose **Create Role**.
+
+## 5. Create an Amazon ECS cluster and Service for the backend
+
+5.1\. Open the Amazon ECS console at https://console.aws.amazon.com/ecs/.
+
+5.2\. In the navigation pane, under **Amazon ECS**, choose **Clusters**.
+
+5.3\. Choose **Create Cluster**.
 
 ![Create Cluster](../images/ecs-create-cluster.png)
 
-4.4\. Select the option **Networking only - Powered by AWS Fargate** and click on **Next step**.
+5.4\. Select the option **Networking only - Powered by AWS Fargate** and click on **Next step**.
 
 ![Select Fargate](../images/ecs-cluster-select-fargate.png)
 
-4.5\. For **Cluster name** type `backend-cluster` and click on **Create**.
+5.5\. For **Cluster name** type `backend-cluster` and click on **Create**.
 
-4.6\. Click on **View Cluster**.
+5.6\. Click on **View Cluster**.
 
-4.7\. In the **Services** sections click on **Create**.
+5.7\. In the **Services** sections click on **Create**.
 
 ![Create Service](../images/ecs-create-service.png)
 
-4.8\. Complete the **Configure service** page as follows:
+5.8\. Complete the **Configure service** page as follows:
 
 * **``Launch type``**: **``FARGATE``**
 * **``Task Definition``**: **``backend``**
@@ -115,52 +132,54 @@ npm install
 
 ![Configure Service](../images/ecs-configure-service.png)
 
-4.9\. Click on **Next step**.
+5.9\. Click on **Next step**.
 
-4.10\. Complete the **Configure network** page as follows:
+5.10\. Complete the **Configure network** page as follows:
 
 * **``Cluster VPC``**: `My VPC`
 * **``Subnets``**: Select `Private Subnet 01` and `Private Subnet 02`
 * **``Auto-assign public IP``**: `DISABLED`
 
-4.11\. For **``Security Groups``** click on **Edit**.
+5.11\. For **``Security Groups``** click on **Edit**.
 
-4.12\. Complete as follows and click on **Save**:
+5.12\. Complete as follows and click on **Save**:
 
 * **``Type``**: **``Custom TCP``**
 * **``Port range``**: **``3000``**
 
-4.13\. For **Load balancer type** select **``Application Load Balancer``**.
+![Service SG](../images/ecs-service-sg.png)
 
-4.14\. For **Load balancer name** select **``backend``**.
+5.13\. For **Load balancer type** select **``Application Load Balancer``**.
 
-4.11\. Click on **Add to load balancer**.
+5.14\. For **Load balancer name** select **``backend``**.
 
-4.12\. For **Target group name** select **``backend``**.
+5.15\. Click on **Add to load balancer**.
 
-4.12\. Click on **Next step**.
+5.16\. For **Target group name** select **``backend``**.
 
-4.10\. Complete the **Set Auto Scaling (optional)** page as follows:
+5.17\. Click on **Next step**.
+
+5.18\. Complete the **Set Auto Scaling (optional)** page as follows:
 
 * **``Service Auto Scaling``**: **``Configure Service Auto Scaling to adjust your service’s desired count``**
 * **``Minimum number of tasks``**: **``2``**
 * **``Desired number of tasks``**: **``2``**
 * **``Maximum number of tasks``**: **``6``**
-* **``IAM role for Service Auto Scaling``**: Select `Create new role` if available, otherwise leave it the same.
+* **``IAM role for Service Auto Scaling``**: Select **``ecsAutoscaleRole``**
 * **``Policy name``**: **``RequestCount``**
 * **``ECS service metric``**: **``ALBRequestCountPerTarget``**
 * **``Target value``**: **``100``**
 
-4.11\. Click on **Next step**.
+5.19\. Click on **Next step**.
 
-4.11\. Click on **Create Service**.
+5.20\. Click on **Create Service**.
 
-4.12\. Click on **View Service**.
+5.21\. Click on **View Service**.
 
-4.13\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+5.22\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 
-4.14\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
+5.23\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
 
-4.15\. Select the **backend** balancer, in the **Description** section copy the **DNS Name** to test in your bworser, you will see the code for the AWS Region.
+5.24\. Select the **backend** balancer, in the **Description** section copy the **DNS Name** to test in your bworser, you will see the code for the AWS Region.
 
-4.16\. Test the DNS Name with `/messages` to see the messages.
+5.25\. Test the DNS Name with `/messages` to see the messages.
