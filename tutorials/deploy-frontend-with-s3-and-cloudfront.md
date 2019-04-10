@@ -83,9 +83,9 @@ aws s3 sync dist/frontend/ s3://<your-bucket-name>/
 
 2.8\. Test in your browser the application messages `<domain-name>/messages`, you will see an **Access Denied** error.
 
-2.9\. Finally, now we need to configure **403** or **404** errors to redirect the traffic to index.html to resolve /messages.
-
 ![CloudFront Error](../images/cf-errror.png)
+
+2.9\. Finally, now we need to configure **403** or **404** errors to redirect the traffic to index.html to resolve /messages.
 
 2.10\. Select your distribution and click on **Distribution Settings**.
 
