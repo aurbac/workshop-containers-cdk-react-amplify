@@ -102,7 +102,7 @@ aws s3 sync dist/frontend/ s3://<your-bucket-name>/
 
 ![CloudFront Custom Error](../images/cf-custom-403.png)
 
-2.13\. Repeat the process to create a new Custom Error Response for the **HTTP Error Code**: **``404: Not Found``**. 
+2.13\. Repeat the last process to create a new Custom Error Response for the **HTTP Error Code**: **``404: Not Found``**, now you have the following two custom error response.
 
 ![CloudFront Custom Errors List](../images/cf-customs.png)
 
