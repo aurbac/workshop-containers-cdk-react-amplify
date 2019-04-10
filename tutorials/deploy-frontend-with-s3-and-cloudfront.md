@@ -30,7 +30,7 @@ cd /home/ec2-user/environment/nodejs-back-and-angular-front/frontend
 npm install
 ```
 
-1.8\. Edit the file **src/environments/environment.prod.ts** and change the value **path** with to your load balancer DNS Name, use the editor included in Cloud9 environment.
+1.8\. Edit the file **src/environments/environment.prod.ts** and change the value **path** with to your load balancer DNS Name and save the file, use the editor included in Cloud9 environment.
 
 ![Config ALB](../images/s3-config-alb.png)
 
@@ -77,6 +77,8 @@ aws s3 sync dist/frontend/ s3://<your-bucket-name>/
 
 2.7\. Go back to https://console.aws.amazon.com/cloudfront/, once the distribution **Status** changes from **In Progress** to **Deployed**, copy the **Domain name** of your CloudFront distribution to test in your browser, you will see the message **Welcome to frontend!**.
 
+![CloudFront Deployed](../images/cf-deployed.png)
+
 ![CloudFront Welcome](../images/cf-welcome.png)
 
 2.8\. Test in your browser the application messages `<domain-name>/messages`, you will see an **Access Denied** error.
@@ -105,6 +107,8 @@ aws s3 sync dist/frontend/ s3://<your-bucket-name>/
 ![CloudFront Custom Errors List](../images/cf-customs.png)
 
 2.14\. Go back to https://console.aws.amazon.com/cloudfront/ and wait some minutes to apply the changes, once the distribution **Status** changes from **In Progress** to **Deployed** you can continue.
+
+![CloudFront Deployed](../images/cf-deployed.png)
 
 2.15\. Now test in your browser the application messages `<domain-name>/messages`, you will see the messages from backend.
 
