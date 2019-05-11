@@ -16,37 +16,37 @@
 
 1.5\. Choose **Create**.
 
-![Create bucket](../images/s3-create.png)
+![Create bucket](images/s3-create.png)
 
 1.6\. Inside your Cloud9 environment got to the frontend folder.
 
-```
+``` bash
 cd /home/ec2-user/environment/nodejs-back-and-angular-front/frontend
 ```
 
 1.7\. Install the node dependencies.
 
-```
+``` bash
 npm install
 ```
 
 1.8\. Edit the file **src/environments/environment.prod.ts** and change the value **path** with to your load balancer DNS Name and save the file, use the editor included in Cloud9 environment.
 
-![Config ALB](../images/s3-config-alb.png)
+![Config ALB](images/s3-config-alb.png)
 
 1.9\. Build the angular application for distrbution.
 
-```
+``` bash
 ng build --prod
 ```
 
 1.10\. Upload the distribution files to your bucket, change `<your-bucket-name>` with your bucket name created.
 
-```
+``` bash
 aws s3 sync dist/frontend/ s3://<your-bucket-name>/
 ```
 
-![S3 Upload](../images/s3-upload.png)
+![S3 Upload](images/s3-upload.png)
 
 ## 2. Deliver you application using Amazon CloudFront
 
@@ -54,11 +54,11 @@ aws s3 sync dist/frontend/ s3://<your-bucket-name>/
 
 2.2\. Choose **Create Distribution**.
 
-![CloudFront Create Distribution](../images/cf-create-button.png)
+![CloudFront Create Distribution](images/cf-create-button.png)
 
 2.3\. For **Web** choose **Get Started**.
 
-![CloudFront Create Web Distribution](../images/cf-web-distribution.png)
+![CloudFront Create Web Distribution](images/cf-web-distribution.png)
 
 2.4\. Complete the **Origin Settings** section as follows:
 
@@ -67,23 +67,23 @@ aws s3 sync dist/frontend/ s3://<your-bucket-name>/
 * **Origin Access Identity**: **``Create a New Identity``**
 * **Grant Read Permissions on Bucke**: **``Yes, Update Bucket Policy``**
 
-![CloudFront Origin Settings](../images/cf-origin-settings.png)
+![CloudFront Origin Settings](images/cf-origin-settings.png)
 
 2.5\. Scroll down, in the **Distribution Settings** section, for **Default Root Object** type `index.html`.
 
-![CloudFront Index](../images/cf-index.png)
+![CloudFront Index](images/cf-index.png)
 
 2.6\. Click on **Create Distribution** and wait some minutes to apply the changes.
 
 2.7\. Go back to https://console.aws.amazon.com/cloudfront/, once the distribution **Status** changes from **In Progress** to **Deployed**, copy the **Domain name** of your CloudFront distribution to test in your browser, you will see the message **Welcome to frontend!**.
 
-![CloudFront Deployed](../images/cf-deployed.png)
+![CloudFront Deployed](images/cf-deployed.png)
 
-![CloudFront Welcome](../images/cf-welcome.png)
+![CloudFront Welcome](images/cf-welcome.png)
 
 2.8\. Test in your browser the application messages `<domain-name>/messages`, you will see an **Access Denied** error.
 
-![CloudFront Error](../images/cf-errror.png)
+![CloudFront Error](images/cf-errror.png)
 
 2.9\. Finally, now we need to configure **403** or **404** errors to redirect the traffic to index.html to resolve /messages.
 
@@ -91,7 +91,7 @@ aws s3 sync dist/frontend/ s3://<your-bucket-name>/
 
 2.11\. Go to **Error Pages** tab and click on **Create Custom Error Response**.
 
-![CloudFront Custom](../images/cf-custom.png)
+![CloudFront Custom](images/cf-custom.png)
 
 2.12\. For **Custom Error Response Settings** complete as follows and click on **Create**:
 
@@ -100,18 +100,18 @@ aws s3 sync dist/frontend/ s3://<your-bucket-name>/
 * **Response Page Path**: **``/index.html``**
 * **HTTP Response Code**: **``200: Ok``**
 
-![CloudFront Custom Error](../images/cf-custom-403.png)
+![CloudFront Custom Error](images/cf-custom-403.png)
 
 2.13\. Repeat the last process to create a new Custom Error Response for the **HTTP Error Code**: **``404: Not Found``**, now you have the following two custom error response.
 
-![CloudFront Custom Errors List](../images/cf-customs.png)
+![CloudFront Custom Errors List](images/cf-customs.png)
 
 2.14\. Go back to https://console.aws.amazon.com/cloudfront/ and wait some minutes to apply the changes, once the distribution **Status** changes from **In Progress** to **Deployed** you can continue.
 
-![CloudFront Deployed](../images/cf-deployed.png)
+![CloudFront Deployed](images/cf-deployed.png)
 
 2.15\. Now test in your browser the application messages `<domain-name>/messages`, you will see the messages from backend.
 
-![Angular Application](../images/angular.png)
+![Angular Application](images/angular.png)
 
 #### Congratulations, now you have an Angular Application stored on Amazon S3 and a Nodejs backend using containers with Amazon ECS.

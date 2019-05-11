@@ -132,3 +132,6 @@ typings/
 # System Files
 /frontend/.DS_Store
 /frontend/Thumbs.db
+
+site/
+docs/images/.DS_Store

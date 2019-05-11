@@ -4,13 +4,13 @@
 
 1.1\. Inside your Cloud9 environment got to the backend folder.
 
-```
+``` bash
 cd /home/ec2-user/environment/nodejs-back-and-angular-front/backend
 ```
 
 1.2\. Install the node dependencies.
 
-```
+``` bash
 npm install
 ```
 
@@ -18,7 +18,7 @@ npm install
 
 1.4\. Click on **Create repository**, for the **Repository name** type `backend` and click **Create repository**.
 
-![Repository name](../images/repository-name.png)
+![Repository name](images/repository-name.png)
 
 **Note:** Copy the **URI** for the backend repository, you will use it later.
 
@@ -26,11 +26,11 @@ npm install
 
 1.6\. Go back to your Cloud9 environment in your backend folder and execute the 5 commands of **Push commands for backend** (macOS/Linux).
 
-![Repository Push Commands](../images/repository-push-commands.png)
+![Repository Push Commands](images/repository-push-commands.png)
 
 1.7\. After pushing to AWS repository you will see the following image.
 
-![Image](../images/ecr-image.png)
+![Image](images/ecr-image.png)
 
 ## 2. Create your Amazon ECS Task Execution IAM Role
 
@@ -40,11 +40,11 @@ npm install
 
 2.3\. Choose **Elastic Container Service** from the list of services, scroll down and choose **Elastic Container Service Task** that allows ECS tasks to call AWS services on your behalf for your use case, then **Next: Permissions**.
 
-![Select Service Role](../images/ecs-role-create.png)
+![Select Service Role](images/ecs-role-create.png)
 
 2.4\. For **attach permissions policies** filter by typing `AmazonECSTaskExecutionRolePolicy` and from the list select **AmazonECSTaskExecutionRolePolicy**, choose **Next: Tags**.
 
-![Role Policies](../images/iam-role-policies.png)
+![Role Policies](images/iam-role-policies.png)
 
 2.5\. For **Add tags** choose **Next: Review**.
 
@@ -58,11 +58,11 @@ npm install
 
 3.3\. Choose **Create new Task Definition**.
 
-![Create Task Definition](../images/ecs-create-task.png)
+![Create Task Definition](images/ecs-create-task.png)
 
 3.4\. On the **Select launch type compatibility** use **FARGATE** and click on **Next step**.
 
-![Select Fargate](../images/ecs-task-fargate.png)
+![Select Fargate](images/ecs-task-fargate.png)
 
 3.5\. Complete the **Configure task and container definitions** page as follows:
 
@@ -78,7 +78,7 @@ npm install
 * **``Image``**: paste the URI repository that you copied earlier in step 1.4.
 * **``Port mappings``**: **``3000``** 
 
-![Task Container](../images/ecs-task-container.png)
+![Task Container](images/ecs-task-container.png)
 
 3.7\. Click on **Create**.
 
@@ -90,11 +90,11 @@ npm install
 
 4.3\. Choose **Elastic Container Service** from the list of services, scroll down and choose **Elastic Container Service Autoscale** that allows Auto Scaling to access and update ECS services, then **Next: Permissions**.
 
-![Select Service Role](../images/ecs-role-create-as.png)
+![Select Service Role](images/ecs-role-create-as.png)
 
 4.4\. In **attach permissions policies**, the **AmazonEC2ContainerServiceAutoscaleRole** policy is selected, choose **Next: Tags**.
 
-![Role Policies](../images/iam-role-policies-as.png)
+![Role Policies](images/iam-role-policies-as.png)
 
 4.5\. For **Add tags** choose **Next: Review**.
 
@@ -108,11 +108,11 @@ npm install
 
 5.3\. Choose **Create Cluster**.
 
-![Create Cluster](../images/ecs-create-cluster.png)
+![Create Cluster](images/ecs-create-cluster.png)
 
 5.4\. Select the option **Networking only - Powered by AWS Fargate** and click on **Next step**.
 
-![Select Fargate](../images/ecs-cluster-select-fargate.png)
+![Select Fargate](images/ecs-cluster-select-fargate.png)
 
 5.5\. For **Cluster name** type `backend-cluster` and click on **Create**.
 
@@ -120,7 +120,7 @@ npm install
 
 5.7\. In the **Services** sections click on **Create**.
 
-![Create Service](../images/ecs-create-service.png)
+![Create Service](images/ecs-create-service.png)
 
 5.8\. Complete the **Configure service** page as follows:
 
@@ -130,7 +130,7 @@ npm install
 * **``Service name``**: **``backend``**
 * **``Number of tasks``**: **``1``** 
 
-![Configure Service](../images/ecs-configure-service.png)
+![Configure Service](images/ecs-configure-service.png)
 
 5.9\. Click on **Next step**.
 
@@ -147,7 +147,7 @@ npm install
 * **``Type``**: **``Custom TCP``**
 * **``Port range``**: **``3000``**
 
-![Service SG](../images/ecs-service-sg.png)
+![Service SG](images/ecs-service-sg.png)
 
 5.13\. For **Load balancer type** select **``Application Load Balancer``**.
 
@@ -159,7 +159,7 @@ npm install
 
 5.17\. Uncheck the **Enable service discovery integration** and click on **Next step**.
 
-![Service SG](../images/ecs-service-discovery-uncheck.png)
+![Service SG](images/ecs-service-discovery-uncheck.png)
 
 5.18\. Complete the **Set Auto Scaling (optional)** page as follows and click on **Next step**.
 
@@ -172,7 +172,7 @@ npm install
 * **``ECS service metric``**: **``ALBRequestCountPerTarget``**
 * **``Target value``**: **``100``**
 
-![Service AS](../images/ecs-as.png)
+![Service AS](images/ecs-as.png)
 
 5.19\. Click on **Create Service** and click on **View Service** once the creation is finished.
 
@@ -184,4 +184,4 @@ npm install
 
 5.23\. Test the DNS Name with `/messages` to see the messages.
 
-![ECS ALB](../images/ecs-alb.png)
+![ECS ALB](images/ecs-alb.png)
