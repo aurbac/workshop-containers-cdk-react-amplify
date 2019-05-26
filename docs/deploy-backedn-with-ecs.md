@@ -122,7 +122,7 @@ npm install
 
 5.6\. Click on **View Cluster**.
 
-5.7\. In the **Services** sections click on **Create**.
+5.7\. In the **Services** section, click on **Create**.
 
 ![Create Service](images/ecs-create-service.png)
 
@@ -181,6 +181,9 @@ npm install
 * **``Target value``**: **``100``**
 
 ![Service AS](images/ecs-as.png)
+
+!!! info
+    **ALBRequestCountPerTarget** - Number of requests completed per target in an Application Load Balancer or a Network Load Balancer target group.
 
 5.19\. Click on **Create Service** and click on **View Service** once the creation is finished.
 
