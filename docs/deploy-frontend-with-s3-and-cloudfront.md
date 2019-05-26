@@ -1,4 +1,4 @@
-# Deploy an Angular frontend with Amazon S3 and Amazon Cloudfront
+# Deploy an Angular frontend with Amazon S3 and Amazon CloudFront
 
 ## 1. Upload Angular application to Amazon S3
 
@@ -65,7 +65,7 @@ aws s3 sync dist/frontend/ s3://<your-bucket-name>/
 * **Origin Domain Name**: Select your bucket name created.
 * **Restrict Bucket Access**: **``Yes``**
 * **Origin Access Identity**: **``Create a New Identity``**
-* **Grant Read Permissions on Bucke**: **``Yes, Update Bucket Policy``**
+* **Grant Read Permissions on Bucket**: **``Yes, Update Bucket Policy``**
 
 ![CloudFront Origin Settings](images/cf-origin-settings.png)
 
@@ -73,7 +73,7 @@ aws s3 sync dist/frontend/ s3://<your-bucket-name>/
 
 ![CloudFront Index](images/cf-index.png)
 
-2.6\. Click on **Create Distribution** and wait some minutes to apply the changes.
+2.6\. Click on **Create Distribution** and wait a few minutes to apply the changes.
 
 2.7\. Go back to https://console.aws.amazon.com/cloudfront/, once the distribution **Status** changes from **In Progress** to **Deployed**, copy the **Domain name** of your CloudFront distribution to test in your browser, you will see the message **Welcome to frontend!**.
 
@@ -106,7 +106,7 @@ aws s3 sync dist/frontend/ s3://<your-bucket-name>/
 
 ![CloudFront Custom Errors List](images/cf-customs.png)
 
-2.14\. Go back to https://console.aws.amazon.com/cloudfront/ and wait some minutes to apply the changes, once the distribution **Status** changes from **In Progress** to **Deployed** you can continue.
+2.14\. Go back to https://console.aws.amazon.com/cloudfront/ and wait a few minutes to apply the changes, once the distribution **Status** changes from **In Progress** to **Deployed** you can continue.
 
 ![CloudFront Deployed](images/cf-deployed.png)
 
@@ -114,4 +114,5 @@ aws s3 sync dist/frontend/ s3://<your-bucket-name>/
 
 ![Angular Application](images/angular.png)
 
-#### Congratulations, now you have an Angular Application stored on Amazon S3 and a Nodejs backend using containers with Amazon ECS.
+!!! done
+    **Now you have an Angular Application stored on Amazon S3 and a Nodejs backend using containers with Amazon ECS.**

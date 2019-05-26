@@ -102,7 +102,7 @@
 
 ![ALB Select](images/alb-select.png)
 
-3.5\. Complete the **Configure Load Balancer** page as follows:
+3.5\. Complete the **Step 1: Configure Load Balancer** page as follows and choose **Next: Configure Security Settings**:
 
 * **``Name``**: `backend`
 * **``Scheme``**: **``internet-facing``**
@@ -111,10 +111,22 @@
 * **``VPC``**: **``My VPC``**
 * **``Availability Zones``**: Select the check box for the Availability Zones to enable for your load balancer. For **``us-east-1a``** select the **``Public Subnet 01``** and for **``us-east-1b``** select **``Public Subnet 02``**.
 
-3.6\. Choose **Next: Configure Security Settings** and choose **Next: Configure Security Groups**.
+![ALB Configuration](images/alb-configuration.png)
 
-3.7\. Select **Create a new security group**, for the Security group name type `backend-alb` and choose **Next: Configure Routing**.
+3.6\. In the **Step 2: Configure Security Settings** section, choose **Next: Configure Security Groups**.
 
-3.8\. In the **Configure Routing** section, for **Name** type `backend`, for Target type, choose to register your targets with an **IP** address and choose **Next: Register Targets**.
+3.7\. In the **Step 3: Configure Security Groups** section, select **Create a new security group**, for the **Security group name** and **Description** type `backend-alb` and choose **Next: Configure Routing**.
 
-3.9\. Choose **Next: Review**, click on **Create** and **Close**.
+![ALB SG](images/alb-sg.png)
+
+3.8\. In the **Step 4: Configure Routing** section, for **Name** type `backend`, for **Target type** choose to register your targets with an **IP** address and choose **Next: Register Targets**.
+
+![ALB Configure Routing](images/alb-configure-routing.png)
+
+3.9\. In the **Step 5: Register Targets** section, choose **Next: Review**, 
+
+3.10\. Review the details and click on **Create** and **Close**.
+
+![ALB Created](images/alb-created.png)
+
+![ALB List](images/alb-list.png)

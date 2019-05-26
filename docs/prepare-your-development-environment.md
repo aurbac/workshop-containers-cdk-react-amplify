@@ -8,7 +8,7 @@
 
 ![Cloud9 Create environment](images/cloud9-create.png)
 
-1.3\. For the **Name** type `MyDevelopmentInstance`, and choose **Next step**.
+1.3\. For the **Name** type `MyDevEnv`, and choose **Next step**.
 
 ![Cloud9 name environment](images/cloud9-name.png)
 
@@ -16,13 +16,13 @@
 
 1.5\. Click on **Create environment**.
 
-1.6\. Wait some seconds until your development environment is ready, you will see the following screen.
+1.6\. Wait a few seconds until your development environment is ready, you will see the following screen.
 
 ![Cloud9 Env](images/cloud9-env.png)
 
 ## 2. Install requirements
 
-2.1\. Inside the Cloud9 environment, in the **bash** terminal, clone the reposiotry.
+2.1\. Inside the Cloud9 environment, in the **bash** terminal, execute the following command to clone the project repository.
 
 ``` bash
 git clone https://github.com/aurbac/nodejs-back-and-angular-front.git
@@ -40,7 +40,7 @@ nvm i v8
 npm install -g @angular/cli
 ```
 
-2.4\. Ensure service linked roles exist for Load Balancers and ECS:
+2.4\. The execution of the following commands make sure that service linked roles exist for Load Balancers and ECS, if they do not exist they are created.
 
 ``` bash
 aws iam get-role --role-name "AWSServiceRoleForElasticLoadBalancing" || aws iam create-service-linked-role --aws-service-name "elasticloadbalancing.amazonaws.com"

@@ -20,15 +20,17 @@ npm install
 
 ![Repository name](images/repository-name.png)
 
-**Note:** Copy the **URI** for the backend repository, you will use it later.
+1.5\. From the **Repositories** list, copy the **URI** for the **backend** repository, you will use it later.
 
-1.5\. Click on the repository name **backend** and then click on **View push commands**.
+![Repositories list](images/ecs-repositories-list.png)
 
-1.6\. Go back to your Cloud9 environment in your backend folder and execute the 5 commands of **Push commands for backend** (macOS/Linux).
+1.6\. Click on the repository name **backend** and then click on **View push commands**.
+
+1.7\. Go back to your Cloud9 environment in your backend folder and execute the 5 commands of **Push commands for backend** (macOS/Linux).
 
 ![Repository Push Commands](images/repository-push-commands.png)
 
-1.7\. After pushing to AWS repository you will see the following image.
+1.7\. After pushing to AWS repository you will see the following image in https://console.aws.amazon.com/ecr/repositories/backend/.
 
 ![Image](images/ecr-image.png)
 
@@ -75,7 +77,7 @@ npm install
 3.6\. Click on **Add container** and complete as follow and choose **Add**:
 
 * **``Container Name``**: **``backend``**
-* **``Image``**: paste the URI repository that you copied earlier in step 1.4.
+* **``Image``**: paste the URI repository that you copied earlier in step 1.5.
 * **``Port mappings``**: **``3000``** 
 
 ![Task Container](images/ecs-task-container.png)
@@ -116,6 +118,8 @@ npm install
 
 5.5\. For **Cluster name** type `backend-cluster` and click on **Create**.
 
+![Create Cluster](images/ecs-create-cluster-name.png)
+
 5.6\. Click on **View Cluster**.
 
 5.7\. In the **Services** sections click on **Create**.
@@ -140,6 +144,8 @@ npm install
 * **``Subnets``**: Select `Private Subnet 01` and `Private Subnet 02`
 * **``Auto-assign public IP``**: `DISABLED`
 
+![Create Cluster](images/ecs-service-vpc.png)
+
 5.11\. For **``Security Groups``** click on **Edit**.
 
 5.12\. Complete as follows and click on **Save**:
@@ -155,6 +161,8 @@ npm install
 
 5.15\. Click on **Add to load balancer**.
 
+![Service ALB](images/ecs-alb-select.png)
+
 5.16\. For **Target group name** select **``backend``**.
 
 5.17\. Uncheck the **Enable service discovery integration** and click on **Next step**.
@@ -163,7 +171,7 @@ npm install
 
 5.18\. Complete the **Set Auto Scaling (optional)** page as follows and click on **Next step**.
 
-* **``Service Auto Scaling``**: **``Configure Service Auto Scaling to adjust your service’s desired count``**
+* **``Service Auto Scaling``**: Select **Configure Service Auto Scaling to adjust your service’s desired count**
 * **``Minimum number of tasks``**: **``2``**
 * **``Desired number of tasks``**: **``2``**
 * **``Maximum number of tasks``**: **``6``**
@@ -176,12 +184,18 @@ npm install
 
 5.19\. Click on **Create Service** and click on **View Service** once the creation is finished.
 
-5.20\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+5.20\. Wait a few seconds, you will see two tasks in running status.
 
-5.21\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
+![ECS Tasks](images/ecs-tasks.png)
 
-5.22\. Select the **backend** balancer, in the **Description** section copy the **DNS Name** to test in your bworser, you will see the code for the AWS Region.
+5.21\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
 
-5.23\. Test the DNS Name with `/messages` to see the messages.
+5.22\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
+
+5.23\. Select the **backend** balancer, in the **Description** section copy the **DNS Name** to test in your bworser, you will see the code for the AWS Region.
+
+![ALB List](images/alb-list.png)
+
+5.24\. Test the DNS Name with `/messages` to see the messages.
 
 ![ECS ALB](images/ecs-alb.png)

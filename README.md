@@ -24,4 +24,4 @@ You must complete the following modules in **US East (N. Virginia)** region in o
 
 3\. [Deploy a Node.js backend with Amazon ECS](docs/deploy-backedn-with-ecs.md)
 
-4\. [Deploy an Angular frontend with Amazon S3 and Amazon Cloudfront](docs/deploy-frontend-with-s3-and-cloudfront.md)
+4\. [Deploy an Angular frontend with Amazon S3 and Amazon CloudFront](docs/deploy-frontend-with-s3-and-cloudfront.md)
