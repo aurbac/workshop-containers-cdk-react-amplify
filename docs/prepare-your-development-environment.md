@@ -12,11 +12,17 @@
 
 ![Cloud9 name environment](images/cloud9-name.png)
 
-1.4\. For the **Environment settings** use the default values and choose **Next step**.
+1.4\. For the **Environment settings** use the default values.
 
-1.5\. Click on **Create environment**.
+![Cloud9 Default Values](images/cloud9-default-settings.png)
 
-1.6\. Wait a few seconds until your development environment is ready, you will see the following screen.
+1.5\. For the **Network settings (advanced)**, expand the section and select your **VPC ID** and **Public Subnet 01** and choose **Next step**. Identify your Subnet Id going back to your subnets list https://console.aws.amazon.com/vpc/home?region=us-east-1#subnets.
+
+![Cloud9 Network Settings](images/cloud9-network-settings.png)
+
+1.6\. For the **Review** page click on **Create environment**.
+
+1.7\. Wait a few seconds until your development environment is ready, you will see the following screen.
 
 ![Cloud9 Env](images/cloud9-env.png)
 
@@ -28,10 +34,10 @@
 git clone https://github.com/aurbac/nodejs-back-and-angular-front.git
 ```
 
-2.2\. Update the nodejs to version 8.
+2.2\. Update the Node.js to version 10 required by Angular.
 
 ``` bash
-nvm i v8
+nvm i v10
 ```
 
 2.3\. Install the Angular CLI globally.
