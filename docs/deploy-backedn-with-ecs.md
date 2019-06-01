@@ -202,3 +202,25 @@ npm install
 5.24\. Test the DNS Name with `/messages` to see the messages.
 
 ![ECS ALB](images/ecs-alb.png)
+
+## 6. Stress your Application Load Balancer with Siege
+
+6.1\. Inside your Cloud9 environment install Siege.
+
+``` bash
+sudo yum install siege -y
+```
+
+6.2\. Stress your application load balancer for 10 minutes, change **<dns-name-load-balancer>** with your **DNS Name** balancer.
+
+``` bash
+siege -c100 -t10M http://<dns-name-load-balancer>/messages
+```
+
+More information for Siege: https://www.joedog.org/siege-manual/
+
+6.3\. Wait for 5 minutes unitl you see more tasks created for your Service Cluster https://console.aws.amazon.com/ecs/home?region=us-east-1#/clusters.
+
+![ECS Test](images/ecs-test.png)
+
+
