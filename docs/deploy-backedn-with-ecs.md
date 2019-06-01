@@ -217,9 +217,9 @@ sudo yum install siege -y
 siege -c100 -t10M http://<dns-name-load-balancer>/messages
 ```
 
-More information for Siege: https://www.joedog.org/siege-manual/
+More information about Siege: https://www.joedog.org/siege-manual/
 
-6.3\. Wait for 5 minutes unitl you see more tasks created for your Service Cluster https://console.aws.amazon.com/ecs/home?region=us-east-1#/clusters.
+6.3\. Wait for 5 minutes until you see more tasks created for your Service Cluster https://console.aws.amazon.com/ecs/home?region=us-east-1#/clusters.
 
 ![ECS Test](images/ecs-test.png)
 
