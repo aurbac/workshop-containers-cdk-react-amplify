@@ -211,7 +211,7 @@ npm install
 sudo yum install siege -y
 ```
 
-6.2\. Stress your application load balancer for 10 minutes, change **`<dns-name-load-balancer`>** with your **DNS Name** balancer.
+6.2\. Stress your application load balancer for 10 minutes, change **`<dns-name-load-balancer>`** with your **DNS Name** balancer.
 
 ``` bash
 siege -c100 -t10M http://<dns-name-load-balancer>/messages
