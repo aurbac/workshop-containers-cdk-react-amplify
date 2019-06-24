@@ -52,3 +52,13 @@ npm install -g @angular/cli
 aws iam get-role --role-name "AWSServiceRoleForElasticLoadBalancing" || aws iam create-service-linked-role --aws-service-name "elasticloadbalancing.amazonaws.com"
 aws iam get-role --role-name "AWSServiceRoleForECS" || aws iam create-service-linked-role --aws-service-name "ecs.amazonaws.com"
 ```
+
+## 3. Create DynamoDB Table
+
+3.1\. Inside your Cloud9 environment got to the **db** folder.
+
+``` bash
+cd /home/ec2-user/environment/nodejs-back-and-angular-front/db
+```
+
+3.2\. 

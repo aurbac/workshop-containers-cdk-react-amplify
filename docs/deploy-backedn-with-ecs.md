@@ -2,7 +2,7 @@
 
 ## 1. Create the backend docker image and upload to Amazon ECR
 
-1.1\. Inside your Cloud9 environment got to the backend folder.
+1.1\. Inside your Cloud9 environment got to the **backend** folder.
 
 ``` bash
 cd /home/ec2-user/environment/nodejs-back-and-angular-front/backend

@@ -1,0 +1,94 @@
+{
+    "Conditions": {
+        "OnDemand": {
+            "Fn::Equals": [
+                {
+                    "Ref": "BillOnDemand"
+                },
+                "true"
+            ]
+        }
+    },
+    "Description": "Create two dynamodb tables with conditional on-demand billing.",
+    "Outputs": {
+        "MessagesTable": {
+            "Description": "Messages Table",
+            "Value": {
+                "Ref": "MessagesTable"
+            }
+        }
+    },
+    "Parameters": {
+        "BillOnDemand": {
+            "AllowedPattern": "(false|true)",
+            "Default": "true",
+            "Type": "String"
+        },
+        "ReadCapacityUnits": {
+            "ConstraintDescription": "should be between 5 and 10000",
+            "Default": "5",
+            "Description": "Provisioned read throughput",
+            "MaxValue": "10000",
+            "MinValue": "5",
+            "Type": "Number"
+        },
+        "WriteCapacityUnits": {
+            "ConstraintDescription": "should be between 5 and 10000",
+            "Default": "10",
+            "Description": "Provisioned write throughput",
+            "MaxValue": "10000",
+            "MinValue": "5",
+            "Type": "Number"
+        }
+    },
+    "Resources": {
+        "MessagesTable": {
+            "Properties": {
+                "AttributeDefinitions": [
+                    {
+                        "AttributeName": "user_id",
+                        "AttributeType": "S"
+                    },
+                    {
+                        "AttributeName": "created_at",
+                        "AttributeType": "N"
+                    }
+                ],
+                "BillingMode": {
+                    "Fn::If": [
+                        "OnDemand",
+                        "PAY_PER_REQUEST",
+                        "PROVISIONED"
+                    ]
+                },
+                "KeySchema": [
+                    {
+                        "AttributeName": "user_id",
+                        "KeyType": "HASH"
+                    },
+                    {
+                        "AttributeName": "created_at",
+                        "KeyType": "RANGE"
+                    }
+                ],
+                "ProvisionedThroughput": {
+                    "Fn::If": [
+                        "OnDemand",
+                        {
+                            "Ref": "AWS::NoValue"
+                        },
+                        {
+                            "ReadCapacityUnits": {
+                                "Ref": "ReadCapacityUnits"
+                            },
+                            "WriteCapacityUnits": {
+                                "Ref": "WriteCapacityUnits"
+                            }
+                        }
+                    ]
+                }
+            },
+            "Type": "AWS::DynamoDB::Table"
+        }
+    }
+}
