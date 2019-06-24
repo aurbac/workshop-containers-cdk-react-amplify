@@ -46,7 +46,7 @@
             "Properties": {
                 "AttributeDefinitions": [
                     {
-                        "AttributeName": "user_id",
+                        "AttributeName": "app_id",
                         "AttributeType": "S"
                     },
                     {
@@ -63,7 +63,7 @@
                 },
                 "KeySchema": [
                     {
-                        "AttributeName": "user_id",
+                        "AttributeName": "app_id",
                         "KeyType": "HASH"
                     },
                     {
