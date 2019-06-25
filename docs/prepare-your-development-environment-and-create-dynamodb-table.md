@@ -59,7 +59,7 @@ aws iam get-role --role-name "AWSServiceRoleForElasticLoadBalancing" || aws iam 
 aws iam get-role --role-name "AWSServiceRoleForECS" || aws iam create-service-linked-role --aws-service-name "ecs.amazonaws.com"
 ```
 
-## 3. Create a DynamoDB table to store the messages
+## 3. Create a DynamoDB Table to store the messages
 
 3.1\. Inside your Cloud9 environment got to the **db** folder.
 
@@ -81,7 +81,11 @@ aws cloudformation describe-stacks --stack-name MsgApp | jq '.Stacks[0].Outputs[
 
 ![Cloud9 DynamoDB Table](images/cloud9-dynamodb-table.png)
 
-3.4\. Insert some messages into the DynamoDB Table by the execution of the following script:
+3.4\. Edit the file **batch_writing.py** and in line 5 change the table name with your own name and save the file, use the editor included in Cloud9 environment.
+
+![Cloud9 DynamoDB Batch Writing](images/cloud9-edit-batch-writing.png)
+
+3.5\. Insert some messages into the DynamoDB Table by the execution of the following script:
 
 ``` bash
 python batch_writing.py
