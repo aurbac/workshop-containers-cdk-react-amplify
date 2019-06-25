@@ -105,8 +105,8 @@ npm install
 
 4.7\. Scroll down for the **ENVIRONMENT** section and add the variables and values as follows and choose **Add**:
 
-* **DYNAMODB_MESSAGES_TABLE** : **Value** : Paste the name of your DynamoDB table **``MsgApp-MessagesTable-XXXXXXXXXXXX``**
-* **APP_ID** : **Value** : **``my-app``**
+* **``DYNAMODB_MESSAGES_TABLE``** : **Value** : **``MsgApp-MessagesTable-XXXXXXXXXXXX``** (Paste the name of your DynamoDB table)
+* **``APP_ID``** : **Value** : **``my-app``**
 
 ![Task Environment](images/ecs-task-environment.png)
 

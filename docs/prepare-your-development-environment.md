@@ -1,4 +1,4 @@
-# Prepare your development environment
+# Prepare your development environment and create DynamoDB Table
 
 ## 1. Create Cloud9 instance for development
 
@@ -73,8 +73,19 @@ cd /home/ec2-user/environment/nodejs-back-and-angular-front/db
 aws cloudformation create-stack --stack-name MsgApp --template-body file://msg-app-dynamodb.json --parameters ParameterKey=BillOnDemand,ParameterValue=true ParameterKey=ReadCapacityUnits,ParameterValue=5 ParameterKey=WriteCapacityUnits,ParameterValue=10
 ```
 
-3.3\. 
+3.3\. Copy the name of the DynamoDB Table as result of the following command:
 
 ``` bash
 aws cloudformation describe-stacks --stack-name MsgApp | jq '.Stacks[0].Outputs[0].OutputValue'
 ```
+
+![Cloud9 DynamoDB Table](images/cloud9-dynamodb-table.png)
+
+3.4\. Insert some messages into the DynamoDB Table by the execution of the following script:
+
+``` bash
+python batch_writing.py
+```
+
+
+

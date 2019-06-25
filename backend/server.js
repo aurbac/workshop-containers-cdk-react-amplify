@@ -66,6 +66,8 @@ app.get('/messages/:token?', (req,res) => {
         data.Items.forEach(function(element, index, array) {
           messages.messages.push({ "created_at" : element.created_at.N , "message" : element.message.S });
         });
+
+        res.status(200).send(messages);
         
       }
     });
