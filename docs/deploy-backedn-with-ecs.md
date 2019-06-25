@@ -54,7 +54,7 @@ npm install
 2.6\. Give your role a **Name**, type `ecsTaskExecutionRole` and choose **Create Role**.
 
 
-## 3. Create your Amazon ECS Task IAM Role for Amazon DynamoDB read only access
+## 3. Create your Amazon ECS Task IAM Role for Amazon DynamoDB Read Only Access
 
 3.1\. Open the IAM console at https://console.aws.amazon.com/iam/.
 
@@ -90,12 +90,12 @@ npm install
 4.5\. Complete the **Configure task and container definitions** page as follows:
 
 * **``Task Definition Name``**: **``backend``**
-* **``Task Role``**: Select **``None``**
+* **``Task Role``**: Select **``ecsDynamoDBRole``**
 * **``Task execution role``**: Select **``ecsTaskExecutionRole``**
 * **``Task memory (GB)``**: Select **``0.5GB``**
 * **``Task CPU (vCPU)``**: select **``0.25 vCPU``**
 
-4.6\. Click on **Add container** and complete as follow and choose **Add**:
+4.6\. Click on **Add container** and complete as follow:
 
 * **``Container Name``**: **``backend``**
 * **``Image``**: paste the URI repository that you copied earlier in step 1.5.
@@ -103,7 +103,14 @@ npm install
 
 ![Task Container](images/ecs-task-container.png)
 
-4.7\. Click on **Create**.
+4.7\. Scroll down for the **ENVIRONMENT** section and add the variables and values as follows and choose **Add**:
+
+* **DYNAMODB_MESSAGES_TABLE** : **Value** : Paste the name of your DynamoDB table **``MsgApp-MessagesTable-XXXXXXXXXXXX``**
+* **APP_ID** : **Value** : **``my-app``**
+
+![Task Environment](images/ecs-task-environment.png)
+
+4.8\. Click on **Create**.
 
 
 ## 5. Create your Amazon ECS Service Auto Scaling IAM Role
