@@ -73,7 +73,11 @@ cd /home/ec2-user/environment/nodejs-back-and-angular-front/db
 aws cloudformation create-stack --stack-name MsgApp --template-body file://msg-app-dynamodb.json --parameters ParameterKey=BillOnDemand,ParameterValue=true ParameterKey=ReadCapacityUnits,ParameterValue=5 ParameterKey=WriteCapacityUnits,ParameterValue=10
 ```
 
-3.3\. Copy the name of the DynamoDB Table as result of the following command:
+3.3\. Wait a few seconds until the CloudFormation stack is created, open the AWS CloudFormation console https://console.aws.amazon.com/cloudformation/ to see when your stack has been successfully created, its status changes to **CREATE_COMPLETE**.
+
+![CloudFormation Stacks](images/cloudformation-stacks.png)
+
+3.4\. Copy the name of the DynamoDB Table as result of the following command:
 
 ``` bash
 aws cloudformation describe-stacks --stack-name MsgApp | jq '.Stacks[0].Outputs[0].OutputValue'
@@ -81,15 +85,12 @@ aws cloudformation describe-stacks --stack-name MsgApp | jq '.Stacks[0].Outputs[
 
 ![Cloud9 DynamoDB Table](images/cloud9-dynamodb-table.png)
 
-3.4\. Edit the file **batch_writing.py** and in line 5 change the table name with your own name and save the file, use the editor included in Cloud9 environment.
+3.5\. Edit the file **batch_writing.py** and in line 5 change the table name with your own name and save the file, use the editor included in Cloud9 environment.
 
 ![Cloud9 DynamoDB Batch Writing](images/cloud9-edit-batch-writing.png)
 
-3.5\. Insert some messages into the DynamoDB Table by the execution of the following script:
+3.6\. Insert some messages into the DynamoDB Table by the execution of the following script:
 
 ``` bash
 python batch_writing.py
 ```
-
-
-
