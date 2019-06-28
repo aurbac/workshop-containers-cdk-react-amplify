@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  path: "http://backend-817623974.us-east-1.elb.amazonaws.com"
+  path: "http://backend-1766915904.us-east-1.elb.amazonaws.com"
 };
 
 /*
