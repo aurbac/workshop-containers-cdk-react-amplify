@@ -7,8 +7,9 @@ import { environment } from '../environments/environment'
 })
 export class ApiService {
     messages = [];
-    messages_token = "";
-    more_messages = true;
+    messages_token:string = "";
+
+    more_messages:boolean = true;
 
     whost = environment.path;
 
@@ -21,17 +22,25 @@ export class ApiService {
             path += "/"+token;
         }
 
-        this.http.get(this.whost+path).subscribe(
+        this.http.get<Message>(this.whost+path).subscribe(
             res => {
                 console.log(res);
+                console.log("Hola " + res.hasOwnProperty("messages"));
+                
                 this.messages = this.messages.concat(<any>res.messages);
                 this.messages_token = res.token;
                 if (this.messages_token==="")
                     this.more_messages = false;
                 console.log(" ---- " + this.more_messages);
+            
             },
             error => console.log(error)
         );
     }
 
+}
+
+interface Message {
+    token: string;
+    messages: string;
 }
