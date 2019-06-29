@@ -1,4 +1,4 @@
-# Prepare your development environment and create DynamoDB Table
+# Prepare your development environment and create a DynamoDB Table
 
 ## 1. Create Cloud9 instance for development
 

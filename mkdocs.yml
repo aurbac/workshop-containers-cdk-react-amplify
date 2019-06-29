@@ -25,7 +25,7 @@ nav:
     - Home: index.md
     - Modules: 
       - Create your VPC and Application Load Balancer for backend: create-vpc-alb.md
-      - Prepare your development environment: prepare-your-development-environment.md
+      - Prepare your development environment and create a DynamoDB Table: prepare-your-development-environment-and-create-dynamodb-table.md
       - Deploy a Node.js backend with Amazon ECS: deploy-backedn-with-ecs.md
       - Deploy an Angular frontend with Amazon S3 and Amazon CloudFront: deploy-frontend-with-s3-and-cloudfront.md
 theme:

@@ -20,7 +20,7 @@ You must complete the following modules in **US East (N. Virginia)** region in o
 
 1\. [Create your VPC and Application Load Balancer for backend.](docs/create-vpc-alb.md)
 
-2\. [Prepare your development environment and create DynamoDB Table](docs/prepare-your-development-environment-and-create-dynamodb-table.md)
+2\. [Prepare your development environment and create a DynamoDB Table](docs/prepare-your-development-environment-and-create-dynamodb-table.md)
 
 3\. [Deploy a Node.js backend with Amazon ECS](docs/deploy-backedn-with-ecs.md)
 

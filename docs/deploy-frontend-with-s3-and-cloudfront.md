@@ -18,7 +18,7 @@
 
 ![Create bucket](images/s3-create.png)
 
-1.6\. Inside your Cloud9 environment got to the **frontend** folder.
+1.6\. Inside your Cloud9 environment go to the **frontend** folder.
 
 ``` bash
 cd /home/ec2-user/environment/nodejs-back-and-angular-front/frontend
