@@ -1,6 +1,6 @@
 # Deploy Application Backend with Node.js and Frontend with Angular
 
-Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon ECS, Amazon S3 and Amazon CloudFront.
+Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon DynamoDB, Amazon ECS, Amazon S3 and Amazon CloudFront.
 
 ![Nodejs Angular](images/nodejs-angular.png)
 
