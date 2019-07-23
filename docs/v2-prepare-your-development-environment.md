@@ -87,15 +87,14 @@ aws sts get-caller-identity
 ![Cloud9 Open](images2/cloud9-open.png)
 
 5.3\. Inside the Cloud9 environment, in the **bash** terminal we are going to configure the AWS CLI as follows:
-
-``` bash
-aws configure
-```
-
     - AWS Access Key ID: **(Empty)**
     - AWS Secret Access Key: **(Empty)**
     - Default region name [us-east-1]: **us-east-1**
     - Default output format [json]: **json**
+
+``` bash
+aws configure
+```
 
 5.4\. Install the Amazon ECS CLI.
 
