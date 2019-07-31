@@ -23,11 +23,15 @@ extra:
 
 nav:
     - Home: index.md
-    - Modules: 
+    - Deploy using AWS Console:
       - Create your VPC and Application Load Balancer for backend: create-vpc-alb.md
       - Prepare your development environment and create a DynamoDB Table: prepare-your-development-environment-and-create-dynamodb-table.md
       - Deploy a Node.js backend with Amazon ECS: deploy-backedn-with-ecs.md
       - Deploy an Angular frontend with Amazon S3 and Amazon CloudFront: deploy-frontend-with-s3-and-cloudfront.md
+    - Deploy using Command Line Interfaces and CloudFormation: 
+      - Prepare your development environment: v2-prepare-your-development-environment.md
+      - Deploy a Node.js backend with Amazon ECS: v2-deploy-backend.md
+      - Deploy an Angular frontend with Amazon S3 and Amazon CloudFront: v2-deploy-frontend.md
 theme:
   name: 'material'
   palette:

@@ -1,36 +1,56 @@
 # Use ECS CLI to deploy the backend application
 
-## 1. Cloning a repository from GitHub
+## 1. Install requirements
+
+1.1\. Install the Amazon ECS CLI.
+
+``` bash
+sudo curl -o /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
+sudo chmod +x /usr/local/bin/ecs-cli
+ecs-cli --version
+```
+
+Reference: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_CLI_installation.html
+
+1.2\. Install the JQ command.
+
+``` bash
+sudo yum install jq
+```
+
+## 2. Cloning a repository from GitHub
+
+2.1 Cloning a repository from GitHub.
 
 ``` bash
 git clone https://github.com/aurbac/msg-app-backend.git
 cd msg-app-backend/
 ```
 
-## 2. Create an Amazon VPC with AWS CloudFormation
+## 3. Create a DynamoDB table with AWS CloudFormation
 
-2.1\. Create a simple DynamoDB table to store the messages for our application, by executing the following command the table is created using AWS CloudFormation.
+3.1\. Create a simple DynamoDB table to store the messages for our application, by executing the following command the table is created using AWS CloudFormation.
 
 ``` bash
 aws cloudformation create-stack --stack-name MsgApp --template-body file://db/msg-app-dynamodb.json --parameters ParameterKey=BillOnDemand,ParameterValue=true ParameterKey=ReadCapacityUnits,ParameterValue=5 ParameterKey=WriteCapacityUnits,ParameterValue=10
 ```
 
-2.2\. Obtain the DynamoDB Table name and exporting as a environment variable.
+3.2\. Obtain the DynamoDB Table name and export it as an environment variable.
 
 ``` bash
 export MY_TABLE_NAME=`aws cloudformation describe-stacks --stack-name MsgApp | jq '.Stacks[0].Outputs[0].OutputValue' | tr -d \"`
 echo $MY_TABLE_NAME
 ```
 
-2.3\. Feed the DynamoDB Table.
+3.3\. Feed the DynamoDB Table.
 
 ``` bash
 python db/batch_writing.py
 ```
 
-## 3. Create an Amazon VPC with AWS CloudFormation
+## 4. Create an Amazon VPC with AWS CloudFormation
 
-3.1\. Create the Amazon VPC with two public and two private subnets using AWS CloudFormation.
+4.1\. Create the Amazon VPC with two public and two private subnets using AWS CloudFormation.
 
 ``` bash
 aws cloudformation create-stack --stack-name MyVPC --template-body file://vpc/AURBAC-VPC-Public-And-Private.json --parameters ParameterKey=VpcCidrBlock,ParameterValue=10.1.0.0/16 ParameterKey=VpcCidrBlockPrivateSubnet01,ParameterValue=10.1.2.0/24 ParameterKey=VpcCidrBlockPrivateSubnet02,ParameterValue=10.1.3.0/24 ParameterKey=VpcCidrBlockPublicSubnet01,ParameterValue=10.1.0.0/24 ParameterKey=VpcCidrBlockPublicSubnet02,ParameterValue=10.1.1.0/24
@@ -39,7 +59,7 @@ aws cloudformation create-stack --stack-name MyVPC --template-body file://vpc/AU
 !!! info
     Wait about 5 minutes until the CloufFormation Stack status is **CREATE_COMPLETE**, got to your AWS CloudFormation console https://console.aws.amazon.com/cloudformation.
 
-3.2\. Obtain the resource Ids and exporting and exporting as a environment variables.
+4.2\. Obtain the resource Ids and export them as environment variables.
 
 ``` bash
 export VPC_ID=`aws cloudformation describe-stack-resources --stack-name MyVPC --logical-resource-id Vpc | jq '.StackResources[0].PhysicalResourceId' | tr -d \"`
@@ -54,67 +74,74 @@ echo $PUBLIC_SUBNET_01
 echo $PUBLIC_SUBNET_02
 ```
 
-## 4. Create the Application Load Balancer using the AWS CLI
+## 5. Create the Application Load Balancer using the AWS CLI
 
-4.1\. Create a Security Group for your Application Load Balancer.
+5.1\. Create a Security Group for your Application Load Balancer.
 
 ``` bash
 export SG_API_ALB=`aws ec2 create-security-group --group-name "api-alb" --description "ALB Security Group" --vpc-id $VPC_ID | jq '.GroupId' | tr -d \"`
 aws ec2 authorize-security-group-ingress --group-id $SG_API_ALB --protocol tcp --port 80 --cidr 0.0.0.0/0
 ```
 
-4.2\. Create an Application Load Balancer.
+5.2\. Create an Application Load Balancer.
 
 ``` bash
 export LOAD_BALANCER_ARN=`aws elbv2 create-load-balancer --name backend-api --type application --security-groups $SG_API_ALB --subnets $PUBLIC_SUBNET_01 $PUBLIC_SUBNET_02 | jq '.LoadBalancers[0].LoadBalancerArn' | tr -d \"`
 ```
 
-4.3\. Create a Target Group for your Application Load Balancer.
+5.3\. Create a Target Group for your Application Load Balancer.
 
 ``` bash
 export TARGET_GROUP_ARN=`aws elbv2 create-target-group --name my-target-alb --protocol HTTP --port 80 --health-check-protocol HTTP --health-check-path /api --vpc-id $VPC_ID --target-type ip | jq '.TargetGroups[0].TargetGroupArn' | tr -d \"`
 ```
 
-4.4\. Create a Listener for your Application Load Balancer.
+5.4\. Create a Listener for your Application Load Balancer.
 
 ``` bash
 export LISTENER_ARN=`aws elbv2 create-listener --load-balancer-arn $LOAD_BALANCER_ARN --protocol HTTP --port 80 --default-actions Type=forward,TargetGroupArn=$TARGET_GROUP_ARN | jq '.Listeners[0].ListenerArn' | tr -d \"`
 ```
 
-## 5. Create ECS Cluster and configure ECS CLI
+## 6. Create an ECS Cluster and configure ECS CLI
+
+6.1\. The following command creates a ECS Cluster using the ECS-CLI.
 
 ``` bash
 ecs-cli up --cluster myCluster --launch-type FARGATE --vpc $VPC_ID --subnets $PRIVATE_SUBNET_01,$PRIVATE_SUBNET_02
+```
+
+6.2\. Configure the cluster as local configuration.
+
+``` bash
 ecs-cli configure --cluster myCluster --region us-east-1 --default-launch-type FARGATE --config-name myCluster
 ```
 
-## 6. Create the Image Docker and upload to Elastic Container Registry
+## 7. Create the Image Docker and upload to Elastic Container Registry
 
-6.1\. Install the application dependencies.
+7.1\. Install the application dependencies.
 
 ``` bash
 npm install
 ```
 
-6.2\. Create the Image Repository.
+7.2\. Create the Image Repository.
 
 ``` bash
 aws ecr create-repository --repository-name my-api
 ```
 
-6.3\. Build the image docker.
+7.3\. Build the image docker.
 
 ``` bash
 docker build -t my-api .
 ```
 
-6.4\. Upload the local image using the ECS CLI.
+7.4\. Upload the local image using the ECS CLI.
 
 ``` bash
 ecs-cli push my-api --cluster-config myCluster
 ```
 
-## 7. Create Security Group for my ECS Service
+## 8. Create Security Group for my ECS Service
 
 ``` bash
 export SG_SERVICE_API=`aws ec2 create-security-group --group-name "service-api" --description "My security group for API" --vpc-id $VPC_ID | jq '.GroupId' | tr -d \"`
@@ -122,7 +149,7 @@ aws ec2 authorize-security-group-ingress --group-id $SG_SERVICE_API --protocol t
 echo $SG_SERVICE_API
 ```
 
-## 8. Create a Role for your Task Execution
+## 9. Create a Role for your Task Execution
 
 ``` bash
 cat > /tmp/task-execution-assume-role.json <<EOL
@@ -144,7 +171,7 @@ aws iam create-role --role-name ecsTaskExecutionRole --assume-role-policy-docume
 aws iam attach-role-policy --role-name ecsTaskExecutionRole --policy-arn arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
 ```
 
-## 9. Create a Role for your Service Tasks
+## 10. Create a Role for your Service Tasks
 
 ``` bash
 cat > /tmp/task-execution-assume-role-dynamodb.json <<EOL
@@ -166,7 +193,7 @@ aws iam create-role --role-name ecsTaskServiceRole --assume-role-policy-document
 aws iam attach-role-policy --role-name ecsTaskServiceRole --policy-arn arn:aws:iam::aws:policy/AmazonDynamoDBReadOnlyAccess
 ```
 
-## 10. Replace Values in files: docker-compose.yml & ecs-params.yml
+## 11. Replace values in files: docker-compose.yml & ecs-params.yml
 
 ``` bash
 export MY_TABLE_NAME=`aws cloudformation describe-stacks --stack-name MsgApp | jq '.Stacks[0].Outputs[0].OutputValue' | tr -d \"`
@@ -195,15 +222,15 @@ export TASK_ROLE_ARN=`aws iam get-role --role-name ecsTaskServiceRole | jq '.Rol
 sed -i "s~<TASK_ROLE_ARN>~$TASK_ROLE_ARN~g" ecs-params.yml
 ```
 
-## 11. Create my ECS Service
+## 12. Create my ECS Service
 
-11.1\. Obtain the Target Group Arn where your container service will be delivered.
+12.1\. Obtain the Target Group Arn where your container service will be delivered.
 
 ``` bash
 export TARGET_GROUP_ARN=`aws elbv2 describe-target-groups --names my-target-alb | jq '.TargetGroups[0].TargetGroupArn' | tr -d \"`
 ```
 
-11.2\. Create the ECS Service using the ECS CLI.
+12.2\. Create the ECS Service using the ECS CLI.
 
 ``` bash
 ecs-cli compose --project-name backend-api service up \
@@ -214,3 +241,14 @@ ecs-cli compose --project-name backend-api service up \
 --cluster-config myCluster \
 --create-log-groups
 ```
+12.3\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
+
+12.4\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
+
+12.5\. Select the **backend** balancer, in the **Description** section copy the **DNS Name** to test in your bworser, you will see the code for the AWS Region.
+
+![ALB List](images2/alb-list.png)
+
+12.6\. Test the DNS Name with `/api/messages` to see the messages.
+
+![ECS ALB](images2/ecs-alb.png)
