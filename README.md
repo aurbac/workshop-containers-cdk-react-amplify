@@ -23,7 +23,7 @@ You must complete the following modules in **US East (N. Virginia)** region in o
     - [Prepare your development environment and create a DynamoDB Table](docs/prepare-your-development-environment-and-create-dynamodb-table.md)
     - [Deploy a Node.js backend with Amazon ECS](docs/deploy-backedn-with-ecs.md)
     - [Deploy an Angular frontend with Amazon S3 and Amazon CloudFront](docs/deploy-frontend-with-s3-and-cloudfront.md)
-- Deploy using Command Line Interfaces and CloudFormation
+- Deploy using CLIs and CloudFormation
     - [Prepare your development environment](v2-prepare-your-development-environment.md)
-    - [Deploy a Node.js backend with Amazon ECS](v2-deploy-backend.md)
-    - [Deploy an Angular frontend with Amazon S3 and Amazon CloudFront](v2-deploy-backend.md)
+    - [Deploy a Node.js backend with Amazon ECS CLI](v2-deploy-backend.md)
+    - [Deploy an Angular frontend with Amazon S3 and Amazon CloudFront with Amplify](v2-deploy-frontend.md)

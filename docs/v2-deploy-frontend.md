@@ -1,4 +1,4 @@
-# Use ECS CLI to deploy the backend application
+# Deploy an Angular frontend with Amazon S3 and Amazon CloudFront with Amplify
 
 ## 1. Update IAM settings for your Cloud9 Environment
 

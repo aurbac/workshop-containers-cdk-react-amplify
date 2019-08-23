@@ -1,4 +1,4 @@
-# Use ECS CLI to deploy the backend application
+# Deploy a Node.js backend with Amazon ECS CLI
 
 ## 1. Install requirements
 
