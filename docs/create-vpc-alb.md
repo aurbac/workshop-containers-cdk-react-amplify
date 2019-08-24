@@ -104,12 +104,12 @@
 
 3.5\. Complete the **Step 1: Configure Load Balancer** page as follows and choose **Next: Configure Security Settings**:
 
-* **``Name``**: `backend`
-* **``Scheme``**: **``internet-facing``**
-* **``IP address type``**: **``ipv4``**
-* **``Listeners``**: The default listener that accepts **``HTTP``** traffic on port **``80``**.
-* **``VPC``**: **``My VPC``**
-* **``Availability Zones``**: Select the check box for the Availability Zones to enable for your load balancer. For **``us-east-1a``** select the **``Public Subnet 01``** and for **``us-east-1b``** select **``Public Subnet 02``**.
+* **Name**: **``backend``**
+* **Scheme**: **``internet-facing``**
+* **IP address type**: **``ipv4``**
+* **Listeners**: The default listener that accepts **``HTTP``** traffic on port **``80``**.
+* **VPC**: **``My VPC``**
+* **Availability Zones**: Select the check box for the Availability Zones to enable for your load balancer. For **``us-east-1a``** select the **``Public Subnet 01``** and for **``us-east-1b``** select **``Public Subnet 02``**.
 
 ![ALB Configuration](images/alb-configuration.png)
 
@@ -119,7 +119,11 @@
 
 ![ALB SG](images/alb-sg.png)
 
-3.8\. In the **Step 4: Configure Routing** section, for **Name** type `backend`, for **Target type** choose to register your targets with an **IP** address and choose **Next: Register Targets**.
+3.8\. In the **Step 4: Configure Routing** section, complete as follows and choose **Next: Register Targets**.
+
+* **Name**: **``backend``**
+* **Target type**: Select **``IP``**
+* **Path**: **``/api/``**
 
 ![ALB Configure Routing](images/alb-configure-routing.png)
 

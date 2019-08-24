@@ -20,7 +20,7 @@ You must complete the following modules in **US East (N. Virginia)** region in o
 
 - Deploy using AWS Console
     - [Create your VPC and Application Load Balancer for backend.](docs/create-vpc-alb.md)
-    - [Prepare your development environment and create a DynamoDB Table](docs/prepare-your-development-environment-and-create-dynamodb-table.md)
+    - [Prepare your development environment](docs/prepare-your-development-environment.md)
     - [Deploy a Node.js backend with Amazon ECS](docs/deploy-backedn-with-ecs.md)
     - [Deploy an Angular frontend with Amazon S3 and Amazon CloudFront](docs/deploy-frontend-with-s3-and-cloudfront.md)
 - Deploy using CLIs and CloudFormation

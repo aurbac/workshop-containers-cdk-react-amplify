@@ -43,7 +43,7 @@ npm install -g @aws-amplify/cli
 npm install -g @angular/cli
 ```
 
-## 3. Clone the project and install dependencies
+## 3. Clone the repository project from GitHub and install dependencies
 
 3.1\. Clone the Github project and install dependencies.
 

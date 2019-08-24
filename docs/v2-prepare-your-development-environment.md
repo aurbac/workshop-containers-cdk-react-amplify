@@ -12,11 +12,11 @@
 
 ![Cloud9 name environment](images2/cloud9-name.png)
 
-1.4\. For the **Environment settings** use the default values and choose **Next step**.
+1.4\. For the **Configure settings** section use the default values and choose **Next step**.
 
-1.5\. Click on **Create environment**.
+1.5\. For the **Review** section click on **Create environment**.
 
-1.6\. Wait some seconds until your development environment is ready, you will see the following screen.
+1.6\. Wait a few seconds until your development environment is ready, you will see the following screen.
 
 ![Cloud9 Env](images2/cloud9-env.png)
 
@@ -78,7 +78,7 @@ aws sts get-caller-identity
 
 ![Cloud9 Validate](images2/cloud9-validate.png)
 
-## 5. Install requirements
+## 5. Configure your AWS CLI
 
 5.1\. Open the AWS Cloud9 console at https://console.aws.amazon.com/cloud9/.
 

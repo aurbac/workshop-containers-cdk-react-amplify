@@ -15,14 +15,15 @@ Reference: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_CLI_i
 1.2\. Install the JQ command.
 
 ``` bash
-sudo yum install jq
+sudo yum install jq -y
 ```
 
-## 2. Cloning a repository from GitHub
+## 2. Clone the repository project from GitHub
 
-2.1 Cloning a repository from GitHub.
+2.1 Inside your **environment** folder clone the repository project from GitHub.
 
 ``` bash
+cd ~/environment/
 git clone https://github.com/aurbac/msg-app-backend.git
 cd msg-app-backend/
 ```
@@ -35,7 +36,7 @@ cd msg-app-backend/
 aws cloudformation create-stack --stack-name MsgApp --template-body file://db/msg-app-dynamodb.json --parameters ParameterKey=BillOnDemand,ParameterValue=true ParameterKey=ReadCapacityUnits,ParameterValue=5 ParameterKey=WriteCapacityUnits,ParameterValue=10
 ```
 
-3.2\. Obtain the DynamoDB Table name and export it as an environment variable.
+3.2\. Wait 30 seconds to obtain the DynamoDB Table name created and export it as an environment variable with the following command.
 
 ``` bash
 export MY_TABLE_NAME=`aws cloudformation describe-stacks --stack-name MsgApp | jq '.Stacks[0].Outputs[0].OutputValue' | tr -d \"`
@@ -47,6 +48,9 @@ echo $MY_TABLE_NAME
 ``` bash
 python db/batch_writing.py
 ```
+3.4\. Open the Amazon DynamoDB console at https://console.aws.amazon.com/dynamodb/, in **Tables** section, select your table and explore the **Items** inserted.
+
+![DynamoDb Table](images/dynamodb-table.png)
 
 ## 4. Create an Amazon VPC with AWS CloudFormation
 
