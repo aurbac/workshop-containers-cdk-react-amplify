@@ -1,0 +1,25 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.7
+    commands:
+      - pip install --upgrade pip
+      - pip install --upgrade awscli
+      - pip install mkdocs
+      - pip install mkdocs-material
+  pre_build:
+    commands:
+      # Discover and run unit tests in the 'tests' directory
+  build:
+    commands:
+      # Build
+      - mkdocs build
+  post_build:
+    commands:
+      # Post Build
+
+artifacts:
+  #type: zip
+  files:
+    - site/*

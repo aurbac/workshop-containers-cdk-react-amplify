@@ -10,4 +10,7 @@ In order to complete these workshops you'll need a valid active AWS Account with
 
 **If the resources that you use for this workshop are left undeleted you will incur charges on your AWS account.**
 
-You must complete the following modules in **US East (N. Virginia)** region in order before proceeding to the next.
+You must complete the following modules in **US East (N. Virginia)** region in order before proceeding to the next, to create the services you have two options:
+
+- [**Option 1: Deploy using AWS Console**](http://aws-msg-app.ws.kabits.com/deploy-using-aws-console/)
+- [**Option 2: Deploy using CLIs and CloudFormation**](http://aws-msg-app.ws.kabits.com/deploy-using-clis-and-cloudformation/)

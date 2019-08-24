@@ -16,14 +16,14 @@ Visit the portal to get started: http://aws-msg-app.ws.kabits.com
 
 ## Modules
 
-You must complete the following modules in **US East (N. Virginia)** region in order before proceeding to the next:
+You must complete the following modules in **US East (N. Virginia)** region in order before proceeding to the next, to create the services you have two options, using the AWS Console or using CLIs and CloudFormation.
 
-- Deploy using AWS Console
+- **Option 1: Deploy using AWS Console**
     - [Create your VPC and Application Load Balancer for backend.](docs/create-vpc-alb.md)
     - [Prepare your development environment](docs/prepare-your-development-environment.md)
     - [Deploy a Node.js backend with Amazon ECS](docs/deploy-backedn-with-ecs.md)
     - [Deploy an Angular frontend with Amazon S3 and Amazon CloudFront](docs/deploy-frontend-with-s3-and-cloudfront.md)
-- Deploy using CLIs and CloudFormation
-    - [Prepare your development environment](v2-prepare-your-development-environment.md)
-    - [Deploy a Node.js backend with Amazon ECS CLI](v2-deploy-backend.md)
-    - [Deploy an Angular frontend with Amazon S3 and Amazon CloudFront with Amplify](v2-deploy-frontend.md)
+- **Option 2: Deploy using CLIs and CloudFormation**
+    - [Prepare your development environment](docs/v2-prepare-your-development-environment.md)
+    - [Deploy a Node.js backend with Amazon ECS CLI](docs/v2-deploy-backend.md)
+    - [Deploy an Angular frontend with Amazon S3 and Amazon CloudFront with Amplify](docs/v2-deploy-frontend.md)
