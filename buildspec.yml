@@ -23,4 +23,4 @@ artifacts:
   #type: zip
   base-directory: 'site*'
   files:
-    - '**/*''
+    - '**/*'
