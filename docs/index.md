@@ -1,6 +1,6 @@
 # Deploy Application Backend with Node.js and Frontend with Angular
 
-Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon DynamoDB, Amazon ECS, Amazon S3 and Amazon CloudFront.
+Hello, this is a self-paced workshop to create an Angular application hosted on Amazon S3 and Amazon CloudFront, it shows a lists of messages stored in a DynamoDB Table, the messages are retrieved with a simple API based on Node.js/Docker deployed using Amazon Container Service.
 
 ![Nodejs Angular](images/nodejs-angular.png)
 
