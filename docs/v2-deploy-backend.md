@@ -18,6 +18,12 @@ Reference: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_CLI_i
 sudo yum install jq -y
 ```
 
+1.3\. Install the latest Boto 3 release via **pip**.
+
+``` bash
+python -m pip install --user boto3
+```
+
 ## 2. Clone the repository project from GitHub
 
 2.1 Inside your **environment** folder clone the repository project from GitHub.

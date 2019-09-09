@@ -14,6 +14,12 @@
 sudo yum install jq -y
 ```
 
+1.4\. Install the latest Boto 3 release via **pip**.
+
+``` bash
+python -m pip install --user boto3
+```
+
 ## 2. Clone the repository project from GitHub
 
 2.1 Inside your **environment** folder clone the repository project from GitHub.
