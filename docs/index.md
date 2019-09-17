@@ -13,4 +13,4 @@ In order to complete these workshops you'll need a valid active AWS Account with
 You must complete the following modules in **US East (N. Virginia)** region in order before proceeding to the next, to create the services you have two options:
 
 - [**Option 1: Deploy using AWS Console**](http://aws-msg-app.ws.kabits.com/deploy-using-aws-console/)
-- [**Option 2: Deploy using CLIs and CloudFormation**](http://aws-msg-app.ws.kabits.com/deploy-using-clis-and-cloudformation/)
+- [**Option 2: Deploy using AWS CDK and AWS Amplify**](http://aws-msg-app.ws.kabits.com/deploy-using-aws-cdk-and-aws-amplify/)

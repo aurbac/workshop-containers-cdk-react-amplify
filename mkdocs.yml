@@ -29,11 +29,11 @@ nav:
     - Prepare your development environment: 'prepare-your-development-environment.md'
     - Deploy a Node.js backend with Amazon ECS: 'deploy-backedn-with-ecs.md'
     - Deploy an Angular frontend with Amazon S3 and Amazon CloudFront: 'deploy-frontend-with-s3-and-cloudfront.md'
-  - Deploy using CLIs and CloudFormation: 
-    - Home: 'deploy-using-clis-and-cloudformation.md'
-    - Prepare your development environment: 'v2-prepare-your-development-environment.md'
-    - Deploy a Node.js backend with Amazon ECS CLI: 'v2-deploy-backend.md'
-    - Deploy an Angular frontend with Amazon S3 and Amazon CloudFront with Amplify: 'v2-deploy-frontend.md'
+  - Deploy using AWS CDK and AWS Amplify: 
+    - Home: 'deploy-using-aws-cdk-and-aws-amplify.md'
+    - Prepare your development environment: 'v3-prepare-your-development-environment.md'
+    - Deploy a Node.js backend using the AWS CDK: 'v3-deploy-backend.md'
+    - Deploy an Angular frontend with Amazon S3 and Amazon CloudFront using the AWS Amplify: 'v3-deploy-frontend.md'
 theme:
   name: 'material'
   palette:

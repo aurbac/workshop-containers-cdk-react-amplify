@@ -23,7 +23,7 @@ You must complete the following modules in **US East (N. Virginia)** region in o
     - [Prepare your development environment](docs/prepare-your-development-environment.md)
     - [Deploy a Node.js backend with Amazon ECS](docs/deploy-backedn-with-ecs.md)
     - [Deploy an Angular frontend with Amazon S3 and Amazon CloudFront](docs/deploy-frontend-with-s3-and-cloudfront.md)
-- **Option 2: Deploy using CLIs and CloudFormation**
+- **Option 2: Deploy using AWS CDK and AWS Amplify**
     - [Prepare your development environment](docs/v2-prepare-your-development-environment.md)
-    - [Deploy a Node.js backend with Amazon ECS CLI](docs/v2-deploy-backend.md)
-    - [Deploy an Angular frontend with Amazon S3 and Amazon CloudFront with Amplify](docs/v2-deploy-frontend.md)
+    - [Deploy a Node.js backend with AWS CDK](docs/v2-deploy-backend.md)
+    - [Deploy an Angular frontend with Amazon S3 and Amazon CloudFront with AWS Amplify](docs/v2-deploy-frontend.md)
