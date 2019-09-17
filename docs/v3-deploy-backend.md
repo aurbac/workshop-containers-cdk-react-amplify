@@ -313,7 +313,6 @@ cdk deploy
 
 7.7\. Open the Amazon ECS console on **Clusters** and **Task Definitions** https://us-east-1.console.aws.amazon.com/ecs/, you will see your new cluster and task definition.
 
-
 ## 8. Creating an Amazon ECS Service with AutoScaling and exposed using an Application Load Balancer
 
 8.1\. Add the following import statements to **lib/my_ecs_construct-stack.ts**.
@@ -323,7 +322,7 @@ import ecs_patterns = require("@aws-cdk/aws-ecs-patterns");
 import elbv2 = require('@aws-cdk/aws-elasticloadbalancingv2');
 ```
 
-8.2\. Add the following code at the end of the constructor to create the Amazon ECS Cluster.
+8.2\. Add the following code at the end of the constructor to create the Fargate Service with Auto Scaling.
 
 ``` typescript
     const sg_service = new ec2.SecurityGroup(this, 'MySGService', { vpc: vpc });
@@ -346,7 +345,7 @@ import elbv2 = require('@aws-cdk/aws-elasticloadbalancingv2');
     });
 ```
 
-8.3\. Add the following code at the end of the constructor to create the Task Definition that contains the Docker container to use.
+8.3\. Add the following code at the end of the constructor to create the Application Load Balancer and the Fargate Service associated.
 
 ``` typescript
     const lb = new elbv2.ApplicationLoadBalancer(this, 'ALB', {
