@@ -62,7 +62,7 @@ cdk init --language typescript
 npm install @aws-cdk/aws-ec2 @aws-cdk/aws-ecs @aws-cdk/aws-ecr @aws-cdk/aws-ecs-patterns @aws-cdk/aws-iam @aws-cdk/aws-dynamodb @aws-cdk/aws-elasticloadbalancingv2
 ```
 
-2.4. Explore your project directory, yuo will have the following files:
+2.4. Explore your project directory, you will have the following files:
 
 * **lib/cdk-msg-app-backend-stack.ts** is where the your CDK application’s main stack is defined. This is the file we’ll working on.
 
