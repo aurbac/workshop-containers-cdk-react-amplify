@@ -54,7 +54,7 @@
 
 ## 4. Configure your AWS CLI
 
-4.1\. Clear credentials files.
+4.1\. Clear credential files.
 
 ``` bash
 rm ~/.aws/config

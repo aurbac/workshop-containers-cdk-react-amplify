@@ -72,7 +72,7 @@ npm install @aws-cdk/aws-ec2 @aws-cdk/aws-ecs @aws-cdk/aws-ecr @aws-cdk/aws-ecs-
 
 ## 3. Creating an Amazon DynamoDB Table
 
-3.1\. Add the following import statements to **lib/my_ecs_construct-stack.ts**.
+3.1\. Add the following import statements to **lib/cdk-msg-app-backend-stack.ts**.
 
 ``` typescript
 import dynamodb = require("@aws-cdk/aws-dynamodb");
@@ -141,7 +141,7 @@ python db/batch_writing.py
 cd ~/environment/cdk-msg-app-backend/
 ```
 
-4.2\. Add the following import statements to **lib/my_ecs_construct-stack.ts**.
+4.2\. Add the following import statements to **lib/cdk-msg-app-backend-stack.ts**.
 
 ``` typescript
 import ec2 = require("@aws-cdk/aws-ec2");
@@ -178,7 +178,7 @@ cdk deploy
 
 ## 5. Creating an Amazon ECR repository
 
-5.1\. Add the following import statements to **lib/my_ecs_construct-stack.ts**.
+5.1\. Add the following import statements to **lib/cdk-msg-app-backend-stack.ts**.
 
 ``` typescript
 import ecr = require("@aws-cdk/aws-ecr");
@@ -241,7 +241,7 @@ ecs-cli push my-api
 cd ~/environment/cdk-msg-app-backend/
 ```
 
-7.2\. Add the following import statements to **lib/my_ecs_construct-stack.ts**.
+7.2\. Add the following import statements to **lib/cdk-msg-app-backend-stack.ts**.
 
 ``` typescript
 import ecs = require("@aws-cdk/aws-ecs");
@@ -315,7 +315,7 @@ cdk deploy
 
 ## 8. Creating an Amazon ECS Service with AutoScaling and exposed using an Application Load Balancer
 
-8.1\. Add the following import statements to **lib/my_ecs_construct-stack.ts**.
+8.1\. Add the following import statements to **lib/cdk-msg-app-backend-stack.ts**.
 
 ``` typescript
 import ecs_patterns = require("@aws-cdk/aws-ecs-patterns");
