@@ -1,6 +1,6 @@
-# Deploy Application Backend with Node.js and Frontend with Angular
+# Deploying an Application Backend with Node.js and Frontend with Angular
 
-Hello, this is a self-paced workshop designed to explore Amazon VPC, Amazon DynamoDB, Amazon ECS, Amazon S3 and Amazon CloudFront.
+Hello, this is a self-paced workshop to create an Angular application hosted on Amazon S3 and Amazon CloudFront, it shows a lists of messages stored in a Amazon DynamoDB table, the messages are retrieved with a simple API based on Node.js/Docker container with continuous deployment using Amazon Container Service and AWS CodePipeline.
 
 ![Nodejs Angular](docs/images/nodejs-angular.png)
 
@@ -19,11 +19,12 @@ Visit the portal to get started: http://aws-msg-app.ws.kabits.com
 You must complete the following modules in **US East (N. Virginia)** region in order before proceeding to the next, to create the services you have two options, using the AWS Console or using CLIs and CloudFormation.
 
 - **Option 1: Deploy using AWS Console**
-    - [Create your VPC and Application Load Balancer for backend.](docs/create-vpc-alb.md)
-    - [Prepare your development environment](docs/prepare-your-development-environment.md)
-    - [Deploy a Node.js backend with Amazon ECS](docs/deploy-backedn-with-ecs.md)
-    - [Deploy an Angular frontend with Amazon S3 and Amazon CloudFront](docs/deploy-frontend-with-s3-and-cloudfront.md)
+    - [Creating your VPC and Application Load Balancer for the backend](docs/create-vpc-alb.md)
+    - [Preparing your development environment](docs/prepare-your-development-environment.md)
+    - [Deploying a Node.js backend with Amazon ECS](docs/deploy-backedn-with-ecs.md)
+    - [Deploying backend container with AWS CodePipeline to Amazon ECS](docs/deploying-backend-container-with-codepipeline-to-ecs.md)
+    - [Deploying an Angular frontend with Amazon S3 and Amazon CloudFront](docs/deploy-frontend-with-s3-and-cloudfront.md)
 - **Option 2: Deploy using AWS CDK and AWS Amplify**
-    - [Prepare your development environment](docs/v2-prepare-your-development-environment.md)
-    - [Deploy a Node.js backend with AWS CDK](docs/v2-deploy-backend.md)
-    - [Deploy an Angular frontend with Amazon S3 and Amazon CloudFront with AWS Amplify](docs/v2-deploy-frontend.md)
+    - [Preparing your development environment](docs/v2-prepare-your-development-environment.md)
+    - [Deploying a Node.js backend with AWS CDK](docs/v2-deploy-backend.md)
+    - [Deploying an Angular frontend with Amazon S3 and Amazon CloudFront with AWS Amplify](docs/v2-deploy-frontend.md)

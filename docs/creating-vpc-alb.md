@@ -1,4 +1,4 @@
-# Create your VPC and Application Load Balancer for backend
+# Creating your VPC and Application Load Balancer for backend
 
 ## 1. Create an Elastic IP for the NAT Gateway
 

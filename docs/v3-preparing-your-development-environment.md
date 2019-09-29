@@ -1,4 +1,4 @@
-# Prepare your development environment
+# Preparing your development environment
 
 ## 1. Create an IAM User with administrator privileges
 
@@ -34,7 +34,9 @@
 
 ![Cloud9 name environment](images2/cloud9-name.png)
 
-2.4\. For the **Configure settings** section use the default values and choose **Next step**.
+2.4\. For the **Configure settings** section, select the instance type **t2.small** and choose **Next step**.
+
+![Cloud9 Settings](images2/cloud9-settings.png)
 
 2.5\. For the **Review** section click on **Create environment**.
 
@@ -72,3 +74,9 @@ aws configure
     - AWS Secret Access Key: **(Type your Secret access key)**
     - Default region name [None]: **us-east-1**
     - Default output format [None]: **json**
+
+4.3\. Remove **aws_session_token** variable from aws credentials.
+
+``` bash
+sed -i 's/aws_session_token =//g' ~/.aws/credentials
+```

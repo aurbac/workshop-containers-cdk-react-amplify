@@ -1,4 +1,4 @@
-# Deploy a Node.js backend with Amazon ECS
+# Deploying a Node.js backend with Amazon ECS
 
 ## 1. Install requirements
 
@@ -6,7 +6,7 @@
 
 1.2\. In the list of environments, for the environment you want to open, inside of the card, choose **Open IDE**.
 
-![Cloud9 Open](images/cloud9-open.png)
+![Cloud9 Open](images2/cloud9-open.png)
 
 1.3\. Inside the Cloud9 environment, in the **bash** terminal install the JQ command.
 
@@ -269,9 +269,9 @@ npm install
 * **Desired number of tasks**: **``2``**
 * **Maximum number of tasks**: **``6``**
 * **IAM role for Service Auto Scaling**: Select **``ecsAutoscaleRole``**
-* **Policy name**: **``RequestCount``**
-* **ECS service metric**: **``ALBRequestCountPerTarget``**
-* **Target value**: **``100``**
+* **Policy name**: **``CPUUtilization``**
+* **ECS service metric**: **``ECSServiceAverageCPUUtilization``**
+* **Target value**: **``80``**
 
 ![Service AS](images/ecs-as.png)
 

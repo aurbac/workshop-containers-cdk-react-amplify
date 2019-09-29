@@ -1,4 +1,4 @@
-# Deploy an Angular frontend with Amazon S3 and Amazon CloudFront
+# Deploying an Angular frontend with Amazon S3 and Amazon CloudFront
 
 ## 1. Create an Amazon S3 to host your Frontend application
 
@@ -25,7 +25,7 @@
 
 2.2\. In the list of environments, for the environment you want to open, inside of the card, choose **Open IDE**.
 
-![Cloud9 Open](images/cloud9-open.png)
+![Cloud9 Open](images2/cloud9-open.png)
 
 2.3\. Update Node.js to the minimal version of 10.
 

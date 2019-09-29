@@ -1,4 +1,4 @@
-# Deploy a Node.js backend using the AWS CDK
+# Deploying a Node.js backend using the AWS CDK
 
 ## 1. Install requirements
 

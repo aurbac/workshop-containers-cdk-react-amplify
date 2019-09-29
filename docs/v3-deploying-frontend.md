@@ -1,4 +1,4 @@
-# Deploy an Angular frontend with Amazon S3 and Amazon CloudFront using the AWS Amplify
+# Deploying an Angular frontend with Amazon S3 and Amazon CloudFront using the AWS Amplify
 
 ## 1. Install global dependencies
 
