@@ -1,6 +1,6 @@
 # Deploying an Application Backend with Node.js and Frontend with Angular
 
-Hello, this is a self-paced workshop to create an Angular application hosted on Amazon S3 and Amazon CloudFront, it shows a lists of messages stored in a Amazon DynamoDB table, the messages are retrieved with a simple API based on Node.js/Docker container with continuous deployment using Amazon Container Service and AWS CodePipeline.
+Hello, this is a self-paced workshop to create an Angular application hosted on Amazon S3 and Amazon CloudFront. It shows a list of messages stored on an Amazon DynamoDB table. The messages are retrieved using a simple API based on Node.js within a Docker using Amazon Container Service. By the way, that container has continuous deployment enabled by using AWS CodePipeline.
 
 ![Nodejs Angular](images/nodejs-angular.png)
 

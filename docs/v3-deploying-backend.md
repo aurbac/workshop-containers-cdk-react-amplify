@@ -207,7 +207,7 @@ cdk deploy
 
 5.5\. Open the Amazon ECR console on **Repositories** https://console.aws.amazon.com/ecr, you will see your new repository.
 
-## 6. Create the Image Docker for your backend and upload to Elastic Container Registry
+## 6. Create the Docker Image for your backend and upload it to your repo on Elastic Container Registry
 
 6.1 Go to your Node.js project folder.
 
@@ -311,9 +311,9 @@ cdk synth
 cdk deploy
 ```
 
-7.7\. Open the Amazon ECS console on **Clusters** and **Task Definitions** https://us-east-1.console.aws.amazon.com/ecs/, you will see your new cluster and task definition.
+7.7\. Open the Amazon ECS console on **Clusters** and **Task Definitions** https://console.aws.amazon.com/ecs/, you will see your new cluster and task definition.
 
-## 8. Creating an Amazon ECS Service with AutoScaling and exposed using an Application Load Balancer
+## 8. Creating an Amazon ECS Service with AutoScaling and expose it using an Application Load Balancer
 
 8.1\. Add the following import statements to **lib/cdk-msg-app-backend-stack.ts**.
 
@@ -382,7 +382,7 @@ cdk synth
 cdk deploy
 ```
 
-8.6\. Open the Amazon ECS console on **Clusters** https://us-east-1.console.aws.amazon.com/ecs/, explore your cluster, you will see a service running with 2 tasks.
+8.6\. Open the Amazon ECS console on **Clusters** https://console.aws.amazon.com/ecs/, explore your cluster, you will see a service running with 2 tasks.
 
 ![ECS Service Tasks](images3/ecs-service-tasks.png)
 
@@ -390,7 +390,7 @@ cdk deploy
 
 8.8\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
 
-8.9\. Select the **backend** balancer, in the **Description** section copy the **DNS Name** to test in your bworser, you will see the code for the AWS Region.
+8.9\. Select the **backend** balancer, in the **Description** section copy the **DNS Name** to test in your browser. you will see the code of the AWS Region you are using.
 
 ![ALB List](images3/ec2-alb-dns-name.png)
 
