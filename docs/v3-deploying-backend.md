@@ -2,7 +2,7 @@
 
 ## 1. Install requirements
 
-1.1\. Install the Amazon ECS CLI.
+1.1\. Install the Amazon ECS CLI, will be used to push the image docker to an Amazon ECR repository with the **ecs-cli push** command.
 
 ``` bash
 sudo curl -o /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
@@ -64,7 +64,7 @@ npm install @aws-cdk/aws-ec2 @aws-cdk/aws-ecs @aws-cdk/aws-ecr @aws-cdk/aws-ecs-
 
 2.4. Explore your project directory, you will have the following files:
 
-* **lib/cdk-msg-app-backend-stack.ts** is where the your CDK application’s main stack is defined. This is the file we’ll working on.
+* **lib/cdk-msg-app-backend-stack.ts** is where your CDK application’s main stack is defined. This is the file we’ll working on.
 
 * **bin/cdk-msg-app-backend.ts** is the entrypoint of the CDK application. It will load the stack defined in lib/cdk-msg-app-backend-stack.ts.
 
@@ -72,7 +72,7 @@ npm install @aws-cdk/aws-ec2 @aws-cdk/aws-ecs @aws-cdk/aws-ecr @aws-cdk/aws-ecs-
 
 ## 3. Creating an Amazon DynamoDB Table
 
-3.1\. Add the following import statements to **lib/cdk-msg-app-backend-stack.ts**.
+3.1\. Add the following import statement to **lib/cdk-msg-app-backend-stack.ts**.
 
 ``` typescript
 import dynamodb = require("@aws-cdk/aws-dynamodb");
@@ -109,7 +109,7 @@ cdk synth
 cdk deploy
 ```
 
-3.5\. Open the Amazon DynamoDB console on **Tables** https://console.aws.amazon.com/dynamodb/home?#tables:, you will see the **messages** table.
+3.5\. Open the Amazon DynamoDB console in **Tables** section https://console.aws.amazon.com/dynamodb/home?#tables:, you will see the **messages** table.
 
 3.6 Go to your Node.js project folder.
 
@@ -129,7 +129,7 @@ echo $MY_TABLE_NAME
 ``` bash
 python db/batch_writing.py
 ```
-3.9\. Open the Amazon DynamoDB console at https://console.aws.amazon.com/dynamodb/, in **Tables** section, select your table and explore the **Items** inserted.
+3.9\. Open the Amazon DynamoDB console in **Tables** section https://console.aws.amazon.com/dynamodb/home?#tables:, select your table and explore the **Items** inserted.
 
 ![DynamoDb Table](images3/dynamodb-table-items.png)
 
@@ -141,7 +141,7 @@ python db/batch_writing.py
 cd ~/environment/cdk-msg-app-backend/
 ```
 
-4.2\. Add the following import statements to **lib/cdk-msg-app-backend-stack.ts**.
+4.2\. Add the following import statement to **lib/cdk-msg-app-backend-stack.ts**.
 
 ``` typescript
 import ec2 = require("@aws-cdk/aws-ec2");
@@ -178,7 +178,7 @@ cdk deploy
 
 ## 5. Creating an Amazon ECR repository
 
-5.1\. Add the following import statements to **lib/cdk-msg-app-backend-stack.ts**.
+5.1\. Add the following import statement to **lib/cdk-msg-app-backend-stack.ts**.
 
 ``` typescript
 import ecr = require("@aws-cdk/aws-ecr");
