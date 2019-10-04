@@ -72,7 +72,7 @@ aws configure
 - Configuration:
     - AWS Access Key ID: **(Type your Access key ID)**
     - AWS Secret Access Key: **(Type your Secret access key)**
-    - Default region name [None]: **(Use your code region, example: us-east-1)** [All Regions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)
+    - Default region name [None]: **(Use your region code, example: us-east-1)** [All Regions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)
     - Default output format [None]: **json**
 
 4.3\. Remove **aws_session_token** variable from aws credentials.
