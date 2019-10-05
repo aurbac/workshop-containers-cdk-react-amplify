@@ -78,14 +78,14 @@ git config --global user.name "Your Name"
 git config --global user.email you@example.com
 ```
 
-3.6\. Edit the file **buildspec.yml** and replace **`<REPOSITORY_URI>`** with your URI from Amazon ECS Repository and save the file, use the editor included in Cloud9 environment.
-
-![Cloud9 Buildspec](images3/cloud9-buildspec-change.png)
+3.6\. Edit the file **buildspec.yml** and replace **`<REPOSITORY_URI>`** with your URI from Amazon ECS Repository and save the file, use the editor included in Cloud9 environment or run the following commands.
 
 ``` bash
 export REPOSITORY_URI=`aws ecr describe-repositories --repository-names my-api | jq '.repositories[0].repositoryUri' | tr -d \"`
 sed -i "s~<REPOSITORY_URI>~$REPOSITORY_URI~g" buildspec.yml
 ```
+
+![Cloud9 Buildspec](images3/cloud9-buildspec-change.png)
 
 3.7\. Push the project to your repository using the HTTPS Git Credentials.
 
