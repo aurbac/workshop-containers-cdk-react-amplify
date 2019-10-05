@@ -67,7 +67,10 @@ npm install \
 @aws-cdk/aws-iam \
 @aws-cdk/aws-dynamodb \
 @aws-cdk/aws-elasticloadbalancingv2 \
-@aws-cdk/aws-codecommit
+@aws-cdk/aws-codecommit \
+@aws-cdk/aws-codebuild \
+@aws-cdk/aws-codepipeline \
+@aws-cdk/aws-codepipeline-actions
 ```
 
 2.4. Explore your project directory, you will have the following files:
