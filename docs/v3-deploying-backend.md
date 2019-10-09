@@ -421,7 +421,7 @@ import codecommit = require('@aws-cdk/aws-codecommit');
 9.2\. Add the following code at the end of the constructor.
 
 ``` typescript
-    const repo = new codecommit.Repository(this, 'Repository' ,{
+    const code = new codecommit.Repository(this, 'Repository' ,{
       repositoryName: 'msg-app-backend',
       description: 'Node.js backend.', // optional property
     });
@@ -496,7 +496,7 @@ git config --global user.name "Your Name"
 git config --global user.email you@example.com
 ```
 
-11.4\. Edit the file **buildspec.yml** and replace **`<REPOSITORY_URI>`** with your URI from Amazon ECS Repository and save the file, use the editor included in Cloud9 environment or run the following commands.
+11.4\. Edit the file **buildspec.yml** and replace **`<REPOSITORY_URI>`** with your URI from Amazon ECR Repository and save the file, use the editor included in Cloud9 environment or run the following commands.
 
 ``` bash
 export REPOSITORY_URI=`aws ecr describe-repositories --repository-names my-api | jq '.repositories[0].repositoryUri' | tr -d \"`
@@ -517,7 +517,13 @@ git push origin master
 
 ## 12. Create Your Pipeline
 
-12.1\. Add the following import statements to **lib/cdk-msg-app-backend-stack.ts**.
+12.1 Return to your CDK project folder.
+
+``` bash
+cd ~/environment/cdk-msg-app-backend/
+```
+
+12.2\. Add the following import statements to **lib/cdk-msg-app-backend-stack.ts**.
 
 ``` typescript
 import codebuild = require('@aws-cdk/aws-codebuild');
@@ -525,7 +531,7 @@ import codepipeline = require('@aws-cdk/aws-codepipeline');
 import codepipeline_actions = require('@aws-cdk/aws-codepipeline-actions');
 ```
 
-12.2\. Add the following code at the end of the constructor.
+12.3\. Add the following code at the end of the constructor.
 
 ``` typescript
     const project = new codebuild.PipelineProject(this, 'MyProject',{
@@ -596,14 +602,14 @@ import codepipeline_actions = require('@aws-cdk/aws-codepipeline-actions');
 !!! info
     You can find the [final file **lib/my_ecs_construct-stack.ts** here](https://github.com/aurbac/cdk-msg-app-backend/blob/master/lib/cdk-msg-app-backend-stack.ts). 
 
-12.3\. Save it and make sure it builds and creates a stack.
+12.4\. Save it and make sure it builds and creates a stack.
 
 ``` bash
 npm run build
 cdk synth
 ```
 
-12.4\. Deploy the stack.
+12.5\. Deploy the stack.
 
 ``` bash
 cdk deploy
