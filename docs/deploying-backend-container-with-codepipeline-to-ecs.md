@@ -81,7 +81,7 @@ git config --global user.email you@example.com
 3.6\. Edit the file **buildspec.yml** and replace **`<REPOSITORY_URI>`** with your URI from Amazon ECS Repository and save the file, use the editor included in Cloud9 environment or run the following commands.
 
 ``` bash
-export REPOSITORY_URI=`aws ecr describe-repositories --repository-names my-api | jq '.repositories[0].repositoryUri' | tr -d \"`
+export REPOSITORY_URI=`aws ecr describe-repositories --repository-names backend | jq '.repositories[0].repositoryUri' | tr -d \"`
 sed -i "s~<REPOSITORY_URI>~$REPOSITORY_URI~g" buildspec.yml
 ```
 
