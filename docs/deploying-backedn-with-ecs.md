@@ -45,7 +45,7 @@ export MY_TABLE_NAME=`aws cloudformation describe-stacks --stack-name MsgApp | j
 echo $MY_TABLE_NAME
 ```
 
-3.3\. Feed the DynamoDB Table.
+3.3\. Feed the DynamoDB Table with some messages.
 
 ``` bash
 python db/batch_writing.py
@@ -72,29 +72,23 @@ aws iam get-role --role-name "AWSServiceRoleForECS" || aws iam create-service-li
 cd ~/environment/msg-app-backend/
 ```
 
-5.2\. Install the node dependencies.
+5.2\. Open the Amazon ECR console at https://console.aws.amazon.com/ecr/repositories/.
 
-``` bash
-npm install
-```
-
-5.3\. Open the Amazon ECR console at https://console.aws.amazon.com/ecr/repositories/.
-
-5.4\. Click on **Create repository**, for the **Repository name** type `backend` and click **Create repository**.
+5.3\. Click on **Create repository**, for the **Repository name** type `backend` and click **Create repository**.
 
 ![Repository name](images/repository-name.png)
 
-5.5\. From the **Repositories** list, copy the **URI** for the **backend** repository, you will use it later.
+5.4\. From the **Repositories** list, copy the **URI** for the **backend** repository, you will use it later.
 
 ![Repositories list](images/ecs-repositories-list.png)
 
-5.6\. Click on the repository name **backend** and then click on **View push commands**.
+5.5\. Click on the repository name **backend** and then click on **View push commands**.
 
-5.7\. Go back to your Cloud9 environment in your backend folder and execute the 5 commands of **Push commands for backend** (macOS/Linux).
+5.6\. Go back to your Cloud9 environment in your backend folder and execute the 5 commands of **Push commands for backend** (macOS/Linux).
 
 ![Repository Push Commands](images/repository-push-commands.png)
 
-5.8\. After pushing to AWS repository you will see the following image in https://console.aws.amazon.com/ecr/repositories/backend/.
+5.7\. After pushing to AWS repository you will see the following image in https://console.aws.amazon.com/ecr/repositories/backend/.
 
 ![Image](images/ecr-image.png)
 

@@ -6,7 +6,7 @@
 
 1.2\. Choose **Users**, then **Add user**.
 
-1.3\. Type a name for your user `admin`, choose **Programmatic access** and click **Next: Permissions**.
+1.3\. Type a name for your user `CdkWorkshopAdmin`, choose **Programmatic access** and click **Next: Permissions**.
 
 ![IAM User name](images3/iam-user-name.png)
 
@@ -30,7 +30,7 @@
 
 ![Cloud9 Create environment](images2/cloud9-create.png)
 
-2.3\. For the **Name** type `MyDevelopmentInstance`, and choose **Next step**.
+2.3\. For the **Name** type `containers-workshop`, and choose **Next step**.
 
 ![Cloud9 name environment](images2/cloud9-name.png)
 
@@ -58,14 +58,14 @@
 
 4.1\. Clear credential files.
 
-``` bash
+```bash
 rm ~/.aws/config
 rm ~/.aws/credentials
 ```
 
-4.2\. Inside the Cloud9 environment, in the **bash** terminal we are going to configure the AWS CLI as follows:
+4.2\. Inside the Cloud9 environment, in the **bash** terminal we are going to configure the AWS CLI with your **CdkWorkshopAdmin** credentials as follows:
 
-``` bash
+```bash
 aws configure
 ```
 
@@ -75,8 +75,10 @@ aws configure
     - Default region name [None]: **(Use your region code, example: us-east-1)** [All Regions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)
     - Default output format [None]: **json**
 
+![AWS Configure](images3/cloud9-aws-configure.png)
+
 4.3\. Remove **aws_session_token** variable from aws credentials.
 
-``` bash
+```bash
 sed -i 's/aws_session_token =//g' ~/.aws/credentials
 ```

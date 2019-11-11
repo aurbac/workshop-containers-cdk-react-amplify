@@ -56,7 +56,9 @@ cd cdk-msg-app-backend
 cdk init --language typescript
 ```
 
-2.3\. Install the packages required for this project.
+![CDK init](images3/cloud9-cdk-init.png)
+
+2.3\. Install the AWS modules and all it’s dependencies into your project.
 
 ``` bash
 npm install \
@@ -73,23 +75,25 @@ npm install \
 @aws-cdk/aws-codepipeline-actions
 ```
 
+![CDK install modules](images3/cloud9-cdk-install-modules.png)
+
 2.4. Explore your project directory, you will have the following files:
 
 * **lib/cdk-msg-app-backend-stack.ts** is where your CDK application’s main stack is defined. This is the file we’ll working on.
 
 * **bin/cdk-msg-app-backend.ts** is the entrypoint of the CDK application. It will load the stack defined in lib/cdk-msg-app-backend-stack.ts.
 
-![CDK Files](images3/cdk-files.png)
+![CDK Files](images3/cloud9-cdk-files.png)
 
 ## 3. Creating an Amazon DynamoDB Table
 
-3.1\. Add the following import statement to **lib/cdk-msg-app-backend-stack.ts**.
+3.1\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
 import dynamodb = require("@aws-cdk/aws-dynamodb");
 ```
 
-3.2\. Replace the comment "**The code that defines your stack goes here**" at the end of the constructor with the following code.
+3.2\. In **lib/cdk-msg-app-backend-stack.ts**, replace the comment "**The code that defines your stack goes here**" at the end of the constructor with the following code.
 
 ``` typescript
     const table = new dynamodb.Table(this, 'Messages', {
@@ -120,6 +124,8 @@ cdk synth
 cdk deploy
 ```
 
+![CDK First Deploy](images3/cloud9-cdk-first-deploy.png)
+
 3.5\. Open the Amazon DynamoDB console in **Tables** section https://console.aws.amazon.com/dynamodb/home?#tables:, you will see the **messages** table.
 
 3.6 Go to your Node.js project folder.
@@ -135,7 +141,7 @@ export MY_TABLE_NAME=`aws cloudformation describe-stacks --stack-name CdkMsgAppB
 echo $MY_TABLE_NAME
 ```
 
-3.8\. Feed the DynamoDB Table.
+3.8\. Feed the DynamoDB Table with some messages.
 
 ``` bash
 python db/batch_writing.py
@@ -152,16 +158,16 @@ python db/batch_writing.py
 cd ~/environment/cdk-msg-app-backend/
 ```
 
-4.2\. Add the following import statement to **lib/cdk-msg-app-backend-stack.ts**.
+4.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
 import ec2 = require("@aws-cdk/aws-ec2");
 ```
 
-4.3\. Add the following code at the end of the constructor.
+4.3\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor.
 
 ``` typescript
-    const vpc = new ec2.Vpc(this, "My-Vpc", {
+    const vpc = new ec2.Vpc(this, "workshop-vpc", {
       cidr: "10.1.0.0/16",
       natGateways: 1,
       subnetConfiguration: [
@@ -189,17 +195,17 @@ cdk deploy
 
 ## 5. Creating an Amazon ECR repository
 
-5.1\. Add the following import statement to **lib/cdk-msg-app-backend-stack.ts**.
+5.1\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
 import ecr = require("@aws-cdk/aws-ecr");
 ```
 
-5.2\. Add the following code at the end of the constructor.
+5.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor.
 
 ``` typescript
-    const repository = new ecr.Repository(this, "Api", {
-      repositoryName: "my-api"
+    const repository = new ecr.Repository(this, "workshop-api", {
+      repositoryName: "workshop-api"
     });
 ```
 
@@ -226,22 +232,16 @@ cdk deploy
 cd ~/environment/msg-app-backend/
 ```
 
-6.2\. Install the application dependencies.
+6.2\. Build the image docker.
 
 ``` bash
-npm install
+docker build -t workshop-api .
 ```
 
-6.3\. Build the image docker.
+6.3\. Upload the local image using the ECS CLI.
 
 ``` bash
-docker build -t my-api .
-```
-
-6.4\. Upload the local image using the ECS CLI.
-
-``` bash
-ecs-cli push my-api
+ecs-cli push workshop-api
 ```
 
 ## 7. Creating an Amazon ECS Cluster and Task Definition
@@ -252,14 +252,14 @@ ecs-cli push my-api
 cd ~/environment/cdk-msg-app-backend/
 ```
 
-7.2\. Add the following import statements to **lib/cdk-msg-app-backend-stack.ts**.
+7.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
 import ecs = require("@aws-cdk/aws-ecs");
 import iam = require("@aws-cdk/aws-iam");
 ```
 
-7.3\. Add the following code at the end of the constructor to create the Amazon ECS Cluster.
+7.3\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor.
 
 ``` typescript
     const cluster = new ecs.Cluster(this, "MyCluster", {
@@ -267,7 +267,7 @@ import iam = require("@aws-cdk/aws-iam");
     });
 ```
 
-7.4\. Add the following code at the end of the constructor to create the Task Definition that contains the Docker container to use.
+7.4\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor to create the Task Definition that contains the Docker container to use.
 
 ``` typescript
     const executionRolePolicy =  new iam.PolicyStatement({
@@ -290,7 +290,7 @@ import iam = require("@aws-cdk/aws-iam");
     fargateTaskDefinition.addToExecutionRolePolicy(executionRolePolicy);
     fargateTaskDefinition.addToTaskRolePolicy(new iam.PolicyStatement({
       effect: iam.Effect.ALLOW,
-      resources: ['*'],
+      resources: [table.tableArn],
       actions: ['dynamodb:*']
     }));
     
@@ -328,14 +328,14 @@ Do you wish to deploy these changes (y/n)? **y**
 
 ## 8. Creating an Amazon ECS Service with AutoScaling and expose it using an Application Load Balancer
 
-8.1\. Add the following import statements to **lib/cdk-msg-app-backend-stack.ts**.
+8.1\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
 import ecs_patterns = require("@aws-cdk/aws-ecs-patterns");
 import elbv2 = require('@aws-cdk/aws-elasticloadbalancingv2');
 ```
 
-8.2\. Add the following code at the end of the constructor to create the Fargate Service with Auto Scaling.
+8.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor to create the Fargate Service with Auto Scaling.
 
 ``` typescript
     const sg_service = new ec2.SecurityGroup(this, 'MySGService', { vpc: vpc });
@@ -358,7 +358,7 @@ import elbv2 = require('@aws-cdk/aws-elasticloadbalancingv2');
     });
 ```
 
-8.3\. Add the following code at the end of the constructor to create the Application Load Balancer and the Fargate Service associated.
+8.3\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor to create the Application Load Balancer and the Fargate Service associated.
 
 ``` typescript
     const lb = new elbv2.ApplicationLoadBalancer(this, 'ALB', {
@@ -412,13 +412,13 @@ Do you wish to deploy these changes (y/n)? **y**
 
 ## 9. Create a CodeCommit repository
 
-9.1\. Add the following import statement to **lib/cdk-msg-app-backend-stack.ts**.
+9.1\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
 import codecommit = require('@aws-cdk/aws-codecommit');
 ```
 
-9.2\. Add the following code at the end of the constructor.
+9.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor.
 
 ``` typescript
     const code = new codecommit.Repository(this, 'Repository' ,{
@@ -446,7 +446,7 @@ cdk deploy
 
 10.2\. In the navigation pane, choose **Users** and then choose **Add user**.
 
-10.3\. In the **User Name** box, type `CodeCommitUser` as the name of the user, for **Access type** select the check box **Programmatic access** and then click **Next: Permissions**.
+10.3\. In the **User Name** box, type `CdkWorkshopCodeCommitUser` as the name of the user, for **Access type** select the check box **Programmatic access** and then click **Next: Permissions**.
 
 ![CodeCommit User name](images3/iam-codecommit-user-name.png)
 
@@ -458,7 +458,7 @@ cdk deploy
 
 ![IAM User](images3/iam-codecommit-close.png)
 
-10.6\. From the users list, click on **CodeCommitUser**.
+10.6\. From the users list, click on **CdkWorkshopCodeCommitUser**.
 
 ![IAM User select](images3/iam-codecommit-select-user.png)
 
@@ -499,7 +499,7 @@ git config --global user.email you@example.com
 11.4\. Edit the file **buildspec.yml** and replace **`<REPOSITORY_URI>`** with your URI from Amazon ECR Repository and save the file, use the editor included in Cloud9 environment or run the following commands.
 
 ``` bash
-export REPOSITORY_URI=`aws ecr describe-repositories --repository-names my-api | jq '.repositories[0].repositoryUri' | tr -d \"`
+export REPOSITORY_URI=`aws ecr describe-repositories --repository-names workshop-api | jq '.repositories[0].repositoryUri' | tr -d \"`
 sed -i "s~<REPOSITORY_URI>~$REPOSITORY_URI~g" buildspec.yml
 ```
 
@@ -510,12 +510,14 @@ sed -i "s~<REPOSITORY_URI>~$REPOSITORY_URI~g" buildspec.yml
 ``` bash
 git add .
 git commit -m "Buildspec"
+git config credential.helper store
+git config --global credential.helper "cache --timeout 7200"
 git push origin master
 ```
 
 ![Cloud9 CodeCommit Push](images3/cloud9-codecommit-push.png)
 
-## 12. Create Your Pipeline
+## 12. Create your CodePipeline
 
 12.1 Return to your CDK project folder.
 
@@ -523,7 +525,7 @@ git push origin master
 cd ~/environment/cdk-msg-app-backend/
 ```
 
-12.2\. Add the following import statements to **lib/cdk-msg-app-backend-stack.ts**.
+12.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
 import codebuild = require('@aws-cdk/aws-codebuild');
@@ -531,7 +533,7 @@ import codepipeline = require('@aws-cdk/aws-codepipeline');
 import codepipeline_actions = require('@aws-cdk/aws-codepipeline-actions');
 ```
 
-12.3\. Add the following code at the end of the constructor.
+12.3\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor
 
 ``` typescript
     const project = new codebuild.PipelineProject(this, 'MyProject',{
@@ -614,3 +616,17 @@ cdk synth
 ``` bash
 cdk deploy
 ```
+
+Do you wish to deploy these changes (y/n)? **y**
+
+12.6\. Open the AWS CodePipeline console at http://console.aws.amazon.com/codesuite/codepipeline/home.
+
+12.7\. On the **Pipelines** page, choose your CDK pipeline.
+
+![CodePipelie](images3/codepipeline-cdk-backendapi-select.png)
+
+12.8\. You will see the pipeline **In progress** or **Succeeded**.
+
+![CodePipelie](images3/codepipeline-cdk-complete-release.png)
+
+12.8\. Now you can work in your **cdk-msg-app-backend** project and have continuous integration and continuous deployments every time you push to CodeCommit.

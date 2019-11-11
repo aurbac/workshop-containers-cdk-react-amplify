@@ -36,9 +36,9 @@ npm install --save aws-amplify aws-amplify-angular
 
 ![Cloud9 Env Prod](images3/cloud9-env-file.png)
 
-## 3. Initialize amplify project
+## 3. Initialize Amplify project
 
-3.1\. Initialize the amplify project.
+3.1\. Initialize the Amplify project.
 
 ``` bash
 amplify init
@@ -76,7 +76,7 @@ https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html
 
 ## 4. Add hosting and publish your Angular project
 
-4.1\. Add hosting to your amplify project.
+4.1\. Add hosting to your Amplify project.
 
 ``` bash
 amplify add hosting

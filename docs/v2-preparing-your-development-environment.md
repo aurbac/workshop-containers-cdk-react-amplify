@@ -8,7 +8,7 @@
 
 ![Cloud9 Create environment](images2/cloud9-create.png)
 
-1.3\. For the **Name** type `MyDevelopmentInstance`, and choose **Next step**.
+1.3\. For the **Name** type `containers-workshop`, and choose **Next step**.
 
 ![Cloud9 name environment](images2/cloud9-name.png)
 
@@ -38,7 +38,6 @@
 
 2.6\. Give your role a **Name**, type `MyDevelopmentInstance` and choose **Create Role**.
 
-
 ## 3. Attach the IAM role to instance
 
 3.1\. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/.
@@ -52,7 +51,6 @@
 3.4\. Select the IAM role **MyDevelopmentInstance** to attach to your instance, and choose **Apply**.
 
 ![Select Role](images2/cloud9-select-role.png)
-
 
 ## 4. Update IAM settings for your Cloud9 Environment
 
@@ -88,12 +86,12 @@ aws sts get-caller-identity
 
 5.3\. Inside the Cloud9 environment, in the **bash** terminal we are going to configure the AWS CLI as follows:
 
-``` bash
+```bash
 aws configure
 ```
 
 - Configuration:
-    - AWS Access Key ID: **(Empty)**
-    - AWS Secret Access Key: **(Empty)**
-    - Default region name [us-east-1]: **us-east-1**
-    - Default output format [json]: **json**
+  - AWS Access Key ID: **(Empty)**
+  - AWS Secret Access Key: **(Empty)**
+  - Default region name [us-east-1]: **us-east-1**
+  - Default output format [json]: **json**

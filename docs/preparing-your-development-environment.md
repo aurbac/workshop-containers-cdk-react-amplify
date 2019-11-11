@@ -8,7 +8,7 @@
 
 ![Cloud9 Create environment](images2/cloud9-create.png)
 
-1.3\. For the **Name** type `MyDevelopmentInstance`, and choose **Next step**.
+1.3\. For the **Name** type `containers-workshop`, and choose **Next step**.
 
 ![Cloud9 name environment](images2/cloud9-name.png)
 
