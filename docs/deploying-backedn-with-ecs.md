@@ -84,7 +84,7 @@ cd ~/environment/msg-app-backend/
 
 5.5\. Click on the repository name **backend** and then click on **View push commands**.
 
-5.6\. Go back to your Cloud9 environment in your backend folder and execute the 5 commands of **Push commands for backend** (macOS/Linux).
+5.6\. Go back to your Cloud9 environment in your backend folder and execute the 4 commands of **Push commands for backend** (macOS/Linux).
 
 ![Repository Push Commands](images/repository-push-commands.png)
 
