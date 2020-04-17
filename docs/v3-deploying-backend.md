@@ -12,14 +12,15 @@ ecs-cli --version
 
 Reference: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_CLI_installation.html
 
-1.2\. Install the AWS Cloud Development Kit.
+1.2\. Verify if AWS Cloud Development Kit is installed by checking the version.
 
 ``` bash
-npm install -g aws-cdk
 cdk --version
 ```
 
-Reference: https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html#getting_started_install
+![CDK Version](images2/cdk-version.png)
+
+If is not installed, you can find the instructions to install here: https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html#getting_started_install
 
 1.3\. Install the JQ command.
 
@@ -90,7 +91,7 @@ npm install \
 3.1\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
-import dynamodb = require("@aws-cdk/aws-dynamodb");
+import * as dynamodb from '@aws-cdk/aws-dynamodb';
 ```
 
 3.2\. In **lib/cdk-msg-app-backend-stack.ts**, replace the comment "**The code that defines your stack goes here**" at the end of the constructor with the following code.
@@ -161,7 +162,7 @@ cd ~/environment/cdk-msg-app-backend/
 4.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
-import ec2 = require("@aws-cdk/aws-ec2");
+import * as ec2 from '@aws-cdk/aws-ec2';
 ```
 
 4.3\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor.
@@ -198,7 +199,7 @@ cdk deploy
 5.1\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
-import ecr = require("@aws-cdk/aws-ecr");
+import * as ecr from '@aws-cdk/aws-ecr';
 ```
 
 5.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor.
@@ -255,8 +256,8 @@ cd ~/environment/cdk-msg-app-backend/
 7.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
-import ecs = require("@aws-cdk/aws-ecs");
-import iam = require("@aws-cdk/aws-iam");
+import * as ecs from '@aws-cdk/aws-ecs';
+import * as iam from '@aws-cdk/aws-iam';
 ```
 
 7.3\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor.
@@ -331,8 +332,8 @@ Do you wish to deploy these changes (y/n)? **y**
 8.1\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
-import ecs_patterns = require("@aws-cdk/aws-ecs-patterns");
-import elbv2 = require('@aws-cdk/aws-elasticloadbalancingv2');
+import * as ecs_patterns from '@aws-cdk/aws-ecs-patterns';
+import * as elbv2 from '@aws-cdk/aws-elasticloadbalancingv2';
 ```
 
 8.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor to create the Fargate Service with Auto Scaling.
@@ -415,7 +416,7 @@ Do you wish to deploy these changes (y/n)? **y**
 9.1\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
-import codecommit = require('@aws-cdk/aws-codecommit');
+import * as codecommit from '@aws-cdk/aws-codecommit';
 ```
 
 9.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor.
@@ -440,63 +441,37 @@ cdk synth
 cdk deploy
 ```
 
-## 10. Create an IAM user for HTTPS Git credentials
+## 10. Connect to CodeCommit and push changes to Git repository
 
-10.1\. Open the IAM console at https://console.aws.amazon.com/iam/.
+10.1\. Your AWS Cloud9 development environment already have IAM credentiales configured, use these credentials with the AWS CLI credential helper. Enable the credential helper by running the following two commands in the terminal of your Cloud9 environment.
 
-10.2\. In the navigation pane, choose **Users** and then choose **Add user**.
+``` bash
+git config --global credential.helper '!aws codecommit credential-helper $@'
+git config --global credential.UseHttpPath true
+```
 
-10.3\. In the **User Name** box, type `CdkWorkshopCodeCommitUser` as the name of the user, for **Access type** select the check box **Programmatic access** and then click **Next: Permissions**.
-
-![CodeCommit User name](images3/iam-codecommit-user-name.png)
-
-10.4\. For **Set permissions** select **Attach existing policies directly**, filter by typing `CodeCommitPowerUser` and from the list select **CodeCommitPowerUser** policy, choose **Next: Tags**.
-
-![IAM User policy](images3/iam-codecommit-policy.png)
-
-10.5\. Choose **Next: Review** to see all of the choices you made up to this point. When you are ready to proceed, choose **Create user** and **Close**.
-
-![IAM User](images3/iam-codecommit-close.png)
-
-10.6\. From the users list, click on **CdkWorkshopCodeCommitUser**.
-
-![IAM User select](images3/iam-codecommit-select-user.png)
-
-10.7\. On the user details page, choose the **Security Credentials** tab, and in **HTTPS Git credentials for AWS CodeCommit**, choose **Generate**.
-
-![IAM User generate](images3/user-codecommit-generate.png)
-
-10.8\. Copy the user name and password that IAM generated for you, either by showing, copying, and then pasting this information into a secure file on your local computer, or by choosing **Download credentials** to download this information as a .CSV file.
-
-![IAM User download](images3/user-codecommit-download.png)
-
-!!! info
-    Open the csv file and use the new credentials to connect to CodeCommit.
-
-## 11. Connect to CodeCommit and push changes to Git repository
-
-11.1\. Inside the Cloud9 environment, in the **bash** terminal go inside **msg-app-backend** folder and remove remote from git project.
+10.2\. Inside the Cloud9 environment, in the **bash** terminal go inside **msg-app-backend** folder and remove remote from git project.
 
 ``` bash
 cd ~/environment/msg-app-backend/
 git remote remove origin
 ```
 
-11.2\. Use your URL repository to add your new origin.
+10.3\. Use your URL repository to add your new origin.
 
 ``` bash
 export MY_REGION=`aws configure get region`
 git remote add origin https://git-codecommit.$MY_REGION.amazonaws.com/v1/repos/msg-app-backend
 ```
 
-11.3\. Configure Git with your name and email.
+10.4\. Configure Git with your name and email.
 
 ``` bash
 git config --global user.name "Your Name"
 git config --global user.email you@example.com
 ```
 
-11.4\. Edit the file **buildspec.yml** and replace **`<REPOSITORY_URI>`** with your URI from Amazon ECR Repository and save the file, use the editor included in Cloud9 environment or run the following commands.
+10.5\. Edit the file **buildspec.yml** and replace **`<REPOSITORY_URI>`** with your URI from Amazon ECR Repository and save the file, use the editor included in Cloud9 environment or run the following commands.
 
 ``` bash
 export REPOSITORY_URI=`aws ecr describe-repositories --repository-names workshop-api | jq '.repositories[0].repositoryUri' | tr -d \"`
@@ -505,35 +480,35 @@ sed -i "s~<REPOSITORY_URI>~$REPOSITORY_URI~g" buildspec.yml
 
 ![Cloud9 Buildspec](images3/cloud9-buildspec-change.png)
 
-11.5\. Push the project to your repository using the HTTPS Git Credentials.
+10.6\. Push the project to your CodeCommit repository.
 
 ``` bash
 git add .
 git commit -m "Buildspec"
-git config credential.helper store
-git config --global credential.helper "cache --timeout 7200"
 git push origin master
 ```
 
-![Cloud9 CodeCommit Push](images3/cloud9-codecommit-push.png)
+10.7\. Now you can browse the content of your respository https://console.aws.amazon.com/codesuite/codecommit/repositories/msg-app-backend/browse.
 
-## 12. Create your CodePipeline
+![CodeCommit Code](images3/codecommit-code.png)
 
-12.1 Return to your CDK project folder.
+## 11. Create your CodePipeline
+
+11.1 Return to your CDK project folder.
 
 ``` bash
 cd ~/environment/cdk-msg-app-backend/
 ```
 
-12.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
+11.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
-import codebuild = require('@aws-cdk/aws-codebuild');
-import codepipeline = require('@aws-cdk/aws-codepipeline');
-import codepipeline_actions = require('@aws-cdk/aws-codepipeline-actions');
+import * as codebuild from '@aws-cdk/aws-codebuild';
+import * as codepipeline from '@aws-cdk/aws-codepipeline';
+import * as codepipeline_actions from '@aws-cdk/aws-codepipeline-actions';
 ```
 
-12.3\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor
+11.3\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor
 
 ``` typescript
     const project = new codebuild.PipelineProject(this, 'MyProject',{
@@ -601,17 +576,14 @@ import codepipeline_actions = require('@aws-cdk/aws-codepipeline-actions');
     });
 ```
 
-!!! info
-    You can find the [final file **lib/my_ecs_construct-stack.ts** here](https://github.com/aurbac/cdk-msg-app-backend/blob/master/lib/cdk-msg-app-backend-stack.ts). 
-
-12.4\. Save it and make sure it builds and creates a stack.
+11.4\. Save it and make sure it builds and creates a stack.
 
 ``` bash
 npm run build
 cdk synth
 ```
 
-12.5\. Deploy the stack.
+11.5\. Deploy the stack.
 
 ``` bash
 cdk deploy
@@ -619,14 +591,14 @@ cdk deploy
 
 Do you wish to deploy these changes (y/n)? **y**
 
-12.6\. Open the AWS CodePipeline console at http://console.aws.amazon.com/codesuite/codepipeline/home.
+11.6\. Open the AWS CodePipeline console at http://console.aws.amazon.com/codesuite/codepipeline/home.
 
-12.7\. On the **Pipelines** page, choose your CDK pipeline.
+11.7\. On the **Pipelines** page, choose your CDK pipeline.
 
 ![CodePipelie](images3/codepipeline-cdk-backendapi-select.png)
 
-12.8\. You will see the pipeline **In progress** or **Succeeded**.
+11.8\. You will see the pipeline **In progress** or **Succeeded**.
 
 ![CodePipelie](images3/codepipeline-cdk-complete-release.png)
 
-12.8\. Now you can work in your **cdk-msg-app-backend** project and have continuous integration and continuous deployments every time you push to CodeCommit.
+11.8\. Now you can work in your **cdk-msg-app-backend** project and have continuous integration and continuous deployments every time you push to CodeCommit.

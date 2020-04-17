@@ -12,14 +12,16 @@ repo_url: 'https://github.com/aurbac/nodejs-back-and-angular-front'
 google_analytics: ['UA-55517703-6', 'aws-msg-app.ws.kabits.com']
 
 # Copyright
-copyright: '&copy; 2019 - AURBAC '
+copyright: '&copy; 2020 - AURBAC '
 
 extra:
-  social:
-    - type: 'home'
-      link: 'http://aws-msg-app.ws.kabits.com'
-    - type: 'twitter'
-      link: 'https://twitter.com/aurbac'
+  social: 
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/aurbac
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/aurbac
+    - icon: fontawesome/solid/home
+      link: http://aws-msg-app.ws.kabits.com
 
 nav:
   - Home: 'index.md'
@@ -36,14 +38,16 @@ nav:
     - Deploying a Node.js backend using the AWS CDK: 'v3-deploying-backend.md'
     - Deploying an Angular frontend with Amazon S3 and Amazon CloudFront using the AWS Amplify: 'v3-deploying-frontend.md'
 theme:
-  name: 'material'
+  name: material
   palette:
     primary: 'light-green'
     accent: 'light-green'
-  logo:
-    icon: 'cloud_done'
-  feature:
-    tabs: true
+  icon:
+    logo: fontawesome/brands/aws
+    repo: fontawesome/brands/git-alt
+  features:
+    - tabs
+    - instant
 markdown_extensions:
   - codehilite:
       linenums: true

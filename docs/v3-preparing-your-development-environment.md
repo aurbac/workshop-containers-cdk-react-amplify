@@ -75,8 +75,6 @@ aws configure
     - Default region name [None]: **(Use your region code, example: us-east-1)** [All Regions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)
     - Default output format [None]: **json**
 
-![AWS Configure](images3/cloud9-aws-configure.png)
-
 4.3\. Remove **aws_session_token** variable from aws credentials.
 
 ```bash
