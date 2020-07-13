@@ -40,8 +40,8 @@ nav:
 theme:
   name: material
   palette:
-    primary: 'light-green'
-    accent: 'light-green'
+    primary: light-green
+    accent: light-green
   icon:
     logo: fontawesome/brands/aws
     repo: fontawesome/brands/git-alt

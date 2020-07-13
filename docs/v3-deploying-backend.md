@@ -1,4 +1,4 @@
-# Deploying a Node.js backend using the AWS CDK
+# Deploying a Node.js backend using the AWS Cloud Development Kit (AWS CDK)
 
 ## 1. Install requirements
 
@@ -12,9 +12,10 @@ ecs-cli --version
 
 Reference: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_CLI_installation.html
 
-1.2\. Verify if AWS Cloud Development Kit is installed by checking the version.
+1.2\. Install the latest version of CDK and check the version.
 
 ``` bash
+npm install -g aws-cdk --force
 cdk --version
 ```
 
@@ -450,7 +451,7 @@ git config --global credential.helper '!aws codecommit credential-helper $@'
 git config --global credential.UseHttpPath true
 ```
 
-10.2\. Inside the Cloud9 environment, in the **bash** terminal go inside **msg-app-backend** folder and remove remote from git project.
+10.2\. Inside the Cloud9 environment, go to **msg-app-backend** folder and remove remote from git project.
 
 ``` bash
 cd ~/environment/msg-app-backend/
