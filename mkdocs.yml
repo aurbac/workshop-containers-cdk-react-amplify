@@ -12,7 +12,7 @@ repo_url: 'https://github.com/aurbac/nodejs-back-and-angular-front'
 google_analytics: ['UA-55517703-6', 'aws-msg-app.ws.kabits.com']
 
 # Copyright
-copyright: '&copy; 2020 - AURBAC '
+copyright: '<a href="https://aws.amazon.com/privacy/" target="blank">Privacy</a> | <a href="https://aws.amazon.com/terms/" target="blank">Site terms</a> | &copy; 2020, Amazon Web Services, Inc. or its affiliates. All rights reserved.'
 
 extra:
   social: 
