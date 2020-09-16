@@ -18,8 +18,6 @@ extra:
   social: 
     - icon: fontawesome/brands/github-alt
       link: https://github.com/aurbac
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/aurbac
     - icon: fontawesome/solid/home
       link: http://aws-msg-app.ws.kabits.com
 
