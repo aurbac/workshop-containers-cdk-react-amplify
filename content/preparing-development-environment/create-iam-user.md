@@ -12,11 +12,11 @@ pre: '<b style="color:#fff;">1. </b>'
 
 1.3\. Type a name for your user `WorkshopAdmin`, choose **Programmatic access** and click **Next: Permissions**.
 
-![IAM User name](images/iam-user-name.png)
+![IAM User name](../images/iam-user-name.png)
 
 1.4\. Click **Attach permissions policies** and select **Administrator Access**, choose **Next: Tags**.
 
-![User Policy](images/iam-user-policy.png)
+![User Policy](../images/iam-user-policy.png)
 
 1.5\. For **Add tags** choose **Next: Review**.
 
@@ -24,4 +24,4 @@ pre: '<b style="color:#fff;">1. </b>'
 
 1.7\. To save the credentials, choose **Download .csv** and then save the file to a safe location, and **Close**.
 
-![User Created](images/iam-user-created.png)
+![User Created](../images/iam-user-created.png)

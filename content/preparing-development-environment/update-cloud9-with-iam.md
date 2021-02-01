@@ -8,8 +8,8 @@ pre: '<b style="color:#fff;">3. </b>'
 
 3.1\. Inside the Cloud9 environment, click on **AWS Cloud9** and **Preferences**.
 
-![Cloud9 Preferences](images/cloud9-preferences.png)
+![Cloud9 Preferences](../images/cloud9-preferences.png)
 
 3.2\. Select **AWS SETTINGS** and turn off **AWS managed temporary credentials**.
 
-![AWS SETTINGS](images/cloud-aws-settings.png)
+![AWS SETTINGS](../images/cloud-aws-settings.png)

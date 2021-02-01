@@ -20,7 +20,7 @@ cd cdk-msg-app-backend
 cdk init --language typescript
 ```
 
-![CDK init](images/cloud9-cdk-init.png)
+![CDK init](../images/cloud9-cdk-init.png)
 
 2.3\. Install the AWS modules and all it’s dependencies into your project.
 
@@ -39,7 +39,7 @@ npm install \
 @aws-cdk/aws-codepipeline-actions
 ```
 
-![CDK install modules](images/cloud9-cdk-install-modules.png)
+![CDK install modules](../images/cloud9-cdk-install-modules.png)
 
 2.4. Explore your project directory, you will have the following files:
 
@@ -47,4 +47,4 @@ npm install \
 
 * **bin/cdk-msg-app-backend.ts** is the entrypoint of the CDK application. It will load the stack defined in lib/cdk-msg-app-backend-stack.ts.
 
-![CDK Files](images/cloud9-cdk-files.png)
+![CDK Files](../images/cloud9-cdk-files.png)

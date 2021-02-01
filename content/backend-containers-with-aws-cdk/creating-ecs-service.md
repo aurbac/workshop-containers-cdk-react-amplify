@@ -74,7 +74,7 @@ cdk deploy
 
 8.6\. Open the Amazon ECS console on **Clusters** https://console.aws.amazon.com/ecs/, explore your cluster, you will see a service running with 2 tasks.
 
-![ECS Service Tasks](images/ecs-service-tasks.png)
+![ECS Service Tasks](../images/ecs-service-tasks.png)
 
 8.7\. Open the Amazon EC2 console at [https://console.aws.amazon.com/ec2/].
 
@@ -82,8 +82,8 @@ cdk deploy
 
 8.9\. Select the **backend** balancer, in the **Description** section copy the **DNS Name** to test in your browser. you will see the code of the AWS Region you are using.
 
-![ALB List](images/ec2-alb-dns-name.png)
+![ALB List](../images/ec2-alb-dns-name.png)
 
 8.10\. Test the DNS Name with `/api/messages` to see the messages.
 
-![ECS ALB](images/ecs-alb-messages.png)
+![ECS ALB](../images/ecs-alb-messages.png)

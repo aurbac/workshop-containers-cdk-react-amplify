@@ -107,10 +107,10 @@ cdk deploy
 
 11.7\. On the **Pipelines** page, choose your CDK pipeline.
 
-![CodePipelie](images/codepipeline-cdk-backendapi-select.png)
+![CodePipelie](../images/codepipeline-cdk-backendapi-select.png)
 
 11.8\. You will see the pipeline **In progress** or **Succeeded**.
 
-![CodePipelie](images/codepipeline-cdk-complete-release.png)
+![CodePipelie](../images/codepipeline-cdk-complete-release.png)
 
 11.8\. Now you can work in your **cdk-msg-app-backend** project and have continuous integration and continuous deployments every time you push to CodeCommit.

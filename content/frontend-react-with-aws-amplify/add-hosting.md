@@ -30,6 +30,6 @@ amplify publish
 This may take a few minutes to create the Amazon CloudFront distribution.
 {{% /notice %}}
 
-![CloudFront Dist](images/cloud9-publish.png)
+![CloudFront Dist](../images/cloud9-publish.png)
 
-![CloudFront Frontend](images/cloudfront-frontend.png)
+![CloudFront Frontend](../images/cloudfront-frontend.png)

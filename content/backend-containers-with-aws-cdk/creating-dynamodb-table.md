@@ -30,7 +30,7 @@ import * as dynamodb from '@aws-cdk/aws-dynamodb';
     new cdk.CfnOutput(this, 'TableName', { value: table.tableName });
 ```
 
-![First CDK code](images/cloud9-cdk-code-dynamodb.png)
+![First CDK code](../images/cloud9-cdk-code-dynamodb.png)
 
 3.3\. Save it and make sure it builds and creates a stack.
 
@@ -45,7 +45,7 @@ cdk synth
 cdk deploy
 ```
 
-![CDK First Deploy](images/cloud9-cdk-first-deploy.png)
+![CDK First Deploy](../images/cloud9-cdk-first-deploy.png)
 
 3.5\. Open the Amazon DynamoDB console in **Tables** section https://console.aws.amazon.com/dynamodb/home?#tables:, you will see the **messages** table.
 
@@ -70,4 +70,4 @@ python db/batch_writing.py
 
 3.9\. Open the Amazon DynamoDB console in **Tables** section [https://console.aws.amazon.com/dynamodb/home?#tables](https://console.aws.amazon.com/dynamodb/home?#tables), select your table and explore the **Items** inserted.
 
-![DynamoDb Table](images/dynamodb-table-items.png)
+![DynamoDb Table](../images/dynamodb-table-items.png)

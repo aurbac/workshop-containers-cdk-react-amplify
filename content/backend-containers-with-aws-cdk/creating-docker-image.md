@@ -26,4 +26,4 @@ ecs-cli push workshop-api
 
 6.4\. Open the Amazon ECR console to see your **workshop-api** repository [https://console.aws.amazon.com/ecr/repositories](https://console.aws.amazon.com/ecr/repositories), you will see your latest image.
 
-![ECR Image](images/cloud9-ecr-image.png)
+![ECR Image](../images/cloud9-ecr-image.png)

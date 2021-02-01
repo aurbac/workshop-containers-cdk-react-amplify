@@ -41,7 +41,7 @@ export REPOSITORY_URI=`aws ecr describe-repositories --repository-names workshop
 sed -i "s~<REPOSITORY_URI>~$REPOSITORY_URI~g" buildspec.yml
 ```
 
-![Cloud9 Buildspec](images/cloud9-buildspec-change.png)
+![Cloud9 Buildspec](../images/cloud9-buildspec-change.png)
 
 10.6\. Push the project to your CodeCommit repository.
 
@@ -53,4 +53,4 @@ git push origin master
 
 10.7\. Now you can browse the content of your respository [https://console.aws.amazon.com/codesuite/codecommit/repositories/msg-app-backend/browse](https://console.aws.amazon.com/codesuite/codecommit/repositories/msg-app-backend/browse).
 
-![CodeCommit Code](images/codecommit-code.png)
+![CodeCommit Code](../images/codecommit-code.png)
