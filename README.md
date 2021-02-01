@@ -8,4 +8,4 @@ See the diagram below for a depiction of the complete architecture.
 
 ## To start
 
-Visit the portal to get started: http://containers-cdk-react-amplify.ws.kabits.com
+Visit the portal to get started: https://containers-cdk-react-amplify.ws.kabits.com
