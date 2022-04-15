@@ -15,8 +15,8 @@ cd ~/environment/cdk-msg-app-backend/
 7.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
-import * as ecs from '@aws-cdk/aws-ecs';
-import * as iam from '@aws-cdk/aws-iam';
+import * as ecs from 'aws-cdk-lib/aws-ecs';
+import * as iam from 'aws-cdk-lib/aws-iam';
 ```
 
 7.3\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor to define an Amazon ECS Cluster.

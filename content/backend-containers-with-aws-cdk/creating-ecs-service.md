@@ -9,8 +9,9 @@ pre: '<b style="color:#fff;">8. </b>'
 8.1\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
-import * as ecs_patterns from '@aws-cdk/aws-ecs-patterns';
-import * as elbv2 from '@aws-cdk/aws-elasticloadbalancingv2';
+import * as ecs_patterns from 'aws-cdk-lib/aws-ecs-patterns';
+import * as elbv2 from 'aws-cdk-lib/aws-elasticloadbalancingv2';
+import { Duration } from 'aws-cdk-lib';
 ```
 
 8.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor to create the Fargate Service with Auto Scaling.
@@ -24,15 +25,15 @@ import * as elbv2 from '@aws-cdk/aws-elasticloadbalancingv2';
       taskDefinition: fargateTaskDefinition,
       desiredCount: 2,
       assignPublicIp: false,
-      securityGroup: sg_service
+      securityGroups: [sg_service]
     });
     
     // Setup AutoScaling policy
     const scaling = service.autoScaleTaskCount({ maxCapacity: 6, minCapacity: 2 });
     scaling.scaleOnCpuUtilization('CpuScaling', {
       targetUtilizationPercent: 50,
-      scaleInCooldown: cdk.Duration.seconds(60),
-      scaleOutCooldown: cdk.Duration.seconds(60)
+      scaleInCooldown: Duration.seconds(60),
+      scaleOutCooldown: Duration.seconds(60)
     });
 ```
 
@@ -72,11 +73,11 @@ cdk deploy
 
 * Do you wish to deploy these changes (y/n)? **y**
 
-8.6\. Open the Amazon ECS console on **Clusters** https://console.aws.amazon.com/ecs/, explore your cluster, you will see a service running with 2 tasks.
+8.6\. Open the Amazon ECS console on **Clusters** [https://us-east-1.console.aws.amazon.com/ecs/v2/clusters?region=us-east-1](https://us-east-1.console.aws.amazon.com/ecs/v2/clusters?region=us-east-1), explore your cluster, you will see a service running with 2 tasks.
 
 ![ECS Service Tasks](../images/ecs-service-tasks.png)
 
-8.7\. Open the Amazon EC2 console at [https://console.aws.amazon.com/ec2/].
+8.7\. Open the Amazon EC2 console at [https://console.aws.amazon.com/ec2/](https://console.aws.amazon.com/ec2/).
 
 8.8\. In the navigation pane, under **LOAD BALANCING**, choose **Load Balancers**.
 
