@@ -1,5 +1,5 @@
-RelativeURLs=true
-CanonifyURLs=true
+relativeURLs=true
+canonifyURLs=true
 languageCode = "en-US"
 defaultContentLanguage = "en"
 
