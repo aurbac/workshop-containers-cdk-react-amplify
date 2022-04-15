@@ -9,7 +9,7 @@ pre: '<b style="color:#fff;">9. </b>'
 9.1\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
-import * as codecommit from '@aws-cdk/aws-codecommit';
+import * as codecommit from 'aws-cdk-lib/aws-codecommit';
 ```
 
 9.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor.

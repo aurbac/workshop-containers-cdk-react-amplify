@@ -51,6 +51,6 @@ git commit -m "Buildspec"
 git push origin master
 ```
 
-10.7\. Now you can browse the content of your respository [https://console.aws.amazon.com/codesuite/codecommit/repositories/msg-app-backend/browse](https://console.aws.amazon.com/codesuite/codecommit/repositories/msg-app-backend/browse).
+10.7\. Now you can browse the content of your respository [https://us-east-1.console.aws.amazon.com/codesuite/codecommit/repositories/msg-app-backend/browse?region=us-east-1#](https://us-east-1.console.aws.amazon.com/codesuite/codecommit/repositories/msg-app-backend/browse?region=us-east-1#).
 
 ![CodeCommit Code](../images/codecommit-code.png)
