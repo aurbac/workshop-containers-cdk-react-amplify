@@ -9,7 +9,8 @@ pre: '<b style="color:#fff;">3. </b>'
 3.1\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
-import * as dynamodb from '@aws-cdk/aws-dynamodb';
+import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
+import { RemovalPolicy, CfnOutput } from 'aws-cdk-lib';
 ```
 
 3.2\. In **lib/cdk-msg-app-backend-stack.ts**, replace the comment "**The code that defines your stack goes here**" at the end of the constructor with the following code.
@@ -25,9 +26,9 @@ import * as dynamodb from '@aws-cdk/aws-dynamodb';
         type: dynamodb.AttributeType.NUMBER
       },
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
-      removalPolicy: cdk.RemovalPolicy.DESTROY, // NOT recommended for production code
+      removalPolicy: RemovalPolicy.DESTROY, // NOT recommended for production code
     });
-    new cdk.CfnOutput(this, 'TableName', { value: table.tableName });
+    new CfnOutput(this, 'TableName', { value: table.tableName });
 ```
 
 ![First CDK code](../images/cloud9-cdk-code-dynamodb.png)
@@ -68,6 +69,6 @@ echo $MY_TABLE_NAME
 python db/batch_writing.py
 ```
 
-3.9\. Open the Amazon DynamoDB console in **Tables** section [https://console.aws.amazon.com/dynamodb/home?#tables](https://console.aws.amazon.com/dynamodb/home?#tables), select your table and explore the **Items** inserted.
+3.9\. Open the Amazon DynamoDB console in **Tables** section [https://console.aws.amazon.com/dynamodbv2/home#item-explorer](https://console.aws.amazon.com/dynamodbv2/home#item-explorer), select your table and explore the **Items** inserted.
 
 ![DynamoDb Table](../images/dynamodb-table-items.png)

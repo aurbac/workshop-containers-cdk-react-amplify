@@ -18,11 +18,18 @@ cd cdk-msg-app-backend
 
 ``` bash
 cdk init --language typescript
+cdk bootstrap
 ```
 
 ![CDK init](../images/cloud9-cdk-init.png)
 
-2.3. Explore your project directory, you will have the following files:
+2.3. Bootstrapping you AWS environment:
+
+``` bash
+cdk bootstrap
+```
+
+2.4. Explore your project directory, you will have the following files:
 
 * **lib/cdk-msg-app-backend-stack.ts** is where your CDK application’s main stack is defined. This is the file we’ll working on.
 

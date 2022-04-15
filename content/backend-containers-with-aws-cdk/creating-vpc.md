@@ -15,7 +15,7 @@ cd ~/environment/cdk-msg-app-backend/
 4.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
-import * as ec2 from '@aws-cdk/aws-ec2';
+import * as ec2 from 'aws-cdk-lib/aws-ec2';
 ```
 
 4.3\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor.

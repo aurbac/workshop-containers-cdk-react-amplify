@@ -9,7 +9,7 @@ pre: '<b style="color:#fff;">5. </b>'
 5.1\. In **lib/cdk-msg-app-backend-stack.ts**, add the following below the last import.
 
 ``` typescript
-import * as ecr from '@aws-cdk/aws-ecr';
+import * as ecr from 'aws-cdk-lib/aws-ecr';
 ```
 
 5.2\. In **lib/cdk-msg-app-backend-stack.ts**, add the following code inside the constructor.
