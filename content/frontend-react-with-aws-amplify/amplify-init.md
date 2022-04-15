@@ -13,22 +13,25 @@ amplify init
 ```
 
 * ? Enter a name for the project **msgappfrontend**
-* ? Enter a name for the environment **dev**
-* ? Choose your default editor: **Visual Studio Code**
-* ? Choose the type of app that you're building **javascript**
 
-Please tell us about your project
+The following configuration will be applied:
 
-* ? What javascript framework are you using **react**
-* ? Source Directory Path:  **src**
-* ? Distribution Directory Path: **build**
-* ? Build Command: **npm run-script build**
-* ? Start Command: **npm run-script start**
+Project information
+| Name: msgappfrontend
+| Environment: dev
+| Default editor: Visual Studio Code
+| App type: javascript
+| Javascript framework: react
+| Source Directory Path: src
+| Distribution Directory Path: build
+| Build Command: npm run-script build
+| Start Command: npm run-script start
 
+* ? Initialize the project with the above configuration? **Yes**
 Using default provider  awscloudformation
+* ? Select the authentication method you want to use: **AWS profile**
 
 For more information on AWS Profiles, see:
 https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
 
-* ? Do you want to use an AWS profile? **Yes**
 * ? Please choose the profile you want to use **default**
