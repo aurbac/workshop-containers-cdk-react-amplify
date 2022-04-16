@@ -10,7 +10,7 @@ pre: '<b style="color:#fff;">5. </b>'
 
 ![Cloud9 Env Prod](../images/cloudfront-cloud9-new.png)
 
-5.2\. Publish your React application changes with invalidation request to the Amazon CloudFront service to invalidate its cache..
+5.2\. Publish your React application changes with invalidation request to the Amazon CloudFront to invalidate its cache..
 
 ``` bash
 amplify publish --invalidateCloudFront
@@ -20,4 +20,6 @@ amplify publish --invalidateCloudFront
 
 ![React Application](../images/cloudfront-frontend-messages.png)
 
+{{% notice success %}}
 **Congratulations!!!! Now you have a React Application stored on Amazon S3 and a Nodejs backend using containers with Amazon ECS.**
+{{% /notice %}}
