@@ -10,10 +10,10 @@ pre: '<b style="color:#fff;">5. </b>'
 
 ![Cloud9 Env Prod](../images/cloudfront-cloud9-new.png)
 
-5.2\. Publish your React application.
+5.2\. Publish your React application changes with invalidation request to the Amazon CloudFront service to invalidate its cache..
 
 ``` bash
-amplify publish
+amplify publish --invalidateCloudFront
 ```
 
 5.3\. Now test in your browser the application to see the messages `https://cloudfront-domain-name/`, you will see the messages from backend.
