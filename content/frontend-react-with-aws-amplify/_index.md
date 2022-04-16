@@ -6,7 +6,7 @@ chapter = true
 pre = '<i class="fa fa-angle-right" aria-hidden="true"></i> '
 +++
 
-{{< youtube -Vm-4BbY58Y >}}
+{{< youtube VzhZ5e1kq50 >}}
 
 [AWS Amplify](https://aws.amazon.com/amplify/) consists of a set of tools (open source framework, admin UI, console) and services (static web hosting) to accelerate the development of mobile and web applications on AWS.
 
