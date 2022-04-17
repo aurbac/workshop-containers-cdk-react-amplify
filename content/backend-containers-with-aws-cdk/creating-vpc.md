@@ -35,7 +35,6 @@ import * as ec2 from 'aws-cdk-lib/aws-ec2';
 4.4\. Save it and make sure it builds and creates a stack.
 
 ``` bash
-npm run build
 cdk synth
 ```
 

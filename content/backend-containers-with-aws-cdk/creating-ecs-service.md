@@ -61,7 +61,6 @@ import { Duration } from 'aws-cdk-lib';
 8.4\. Save it and make sure it builds and creates a stack.
 
 ``` bash
-npm run build
 cdk synth
 ```
 

@@ -18,12 +18,11 @@ cd cdk-msg-app-backend
 
 ``` bash
 cdk init --language typescript
-cdk bootstrap
 ```
 
 ![CDK init](../images/cloud9-cdk-init.png)
 
-2.3. Bootstrapping you AWS environment:
+2.3. Bootstrapping your AWS environment:
 
 ``` bash
 cdk bootstrap

@@ -23,7 +23,6 @@ import * as ecr from 'aws-cdk-lib/aws-ecr';
 5.3\. Save it and make sure it builds and creates a stack.
 
 ``` bash
-npm run build
 cdk synth
 ```
 

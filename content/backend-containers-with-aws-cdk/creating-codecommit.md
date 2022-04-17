@@ -24,7 +24,6 @@ import * as codecommit from 'aws-cdk-lib/aws-codecommit';
 9.3\. Save it and make sure it builds and creates a stack.
 
 ``` bash
-npm run build
 cdk synth
 ```
 

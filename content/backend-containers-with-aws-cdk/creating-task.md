@@ -73,7 +73,6 @@ import * as iam from 'aws-cdk-lib/aws-iam';
 7.5\. Save it and make sure it builds and creates a stack.
 
 ``` bash
-npm run build
 cdk synth
 ```
 

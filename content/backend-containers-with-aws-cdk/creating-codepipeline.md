@@ -91,7 +91,6 @@ import * as codepipeline_actions from 'aws-cdk-lib/aws-codepipeline-actions';
 11.4\. Save it and make sure it builds and creates a stack.
 
 ``` bash
-npm run build
 cdk synth
 ```
 
